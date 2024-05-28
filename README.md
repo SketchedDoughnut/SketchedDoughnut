@@ -1,13 +1,13 @@
 ### hey~!
 I'm SKetched Doughnut, a developer that usually makes projects by themself. Here are my projects!
 
-**SDA**
+**SDA** <br>
 Sketched Doughnut Distraction Act, known as SDA, is a game project I have made. I designed an installer, an update agent, a patch update, and three games (one was a collaboration with someone else). To learn more / install, go [here!](https://github.com/SketchedDoughnut/SDA)
 
-**Miles To Muppets**
+**Miles To Muppets** <br>
 Miles To Muppets is a package I made because of a joke. It converts miles distance to how many songs you can listen to from a album of the Muppets! To learn more / use the package, go [here!](https://github.com/SketchedDoughnut/miles-to-muppets)
 
-**lynxy**
+**lynxy** <br>
 lynxy is another package I have made. It is code that makes setting up a server / client system on a LAN network incredibly easy. To learn more, go [here!](https://github.com/SketchedDoughnut/lynxy)
 
 
