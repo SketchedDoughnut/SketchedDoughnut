@@ -1,5 +1,5 @@
 ### hey~!
-I'm SKetched Doughnut, a developer that usually makes projects by themself. Here are my projects!
+I'm Sketched Doughnut, a developer that usually makes projects by themself. Here are my projects!
 
 **SDA** <br>
 Sketched Doughnut Distraction Act, known as SDA, is a game project I have made. I designed an installer, an update agent, a patch update, and three games (one was a collaboration with someone else). To learn more / install, go [here!](https://github.com/SketchedDoughnut/SDA)
