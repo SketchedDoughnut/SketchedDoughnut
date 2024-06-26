@@ -2,12 +2,7 @@
 const PAGE_URL = location.toString();
 const WEB_URL = "https://sketcheddoughnut.github.io/SketchedDoughnut/";
 
-//////////////////// PAGE DETECTING ////////////////////
-// redirect to index.html
-if (PAGE_URL === WEB_URL) {
-    window.location.href = "https://sketcheddoughnut.github.io/SketchedDoughnut/index.html";
-}
-
+//////////////////// PRE-LOADING ////////////////////
 // detect page that they are on, run the loading function for that page
 if (PAGE_URL.includes('color.html')) {
     colorOnLoad();
