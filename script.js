@@ -5,7 +5,7 @@ const WEB_URL = "https://sketcheddoughnut.github.io/SketchedDoughnut/";
 //////////////////// PAGE DETECTING ////////////////////
 // redirect to index.html
 if (PAGE_URL === WEB_URL) {
-    window.location.href = "https://sketcheddoughnut.github.io/SketchedDoughnut/index.html";
+    window.location.href = "./index.html";
 }
 
 // detect page that they are on, run the loading function for that page
