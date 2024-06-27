@@ -4,7 +4,7 @@ const WEB_URL = "https://sketcheddoughnut.github.io/SketchedDoughnut/";
 
 //////////////////// PRE-LOADING ////////////////////
 // detect page that they are on, run the loading function for that page
-if (PAGE_URL.includes('color.html')) {
+if (PAGE_URL.includes('colour.html')) {
     colorOnLoad();
 }
 
