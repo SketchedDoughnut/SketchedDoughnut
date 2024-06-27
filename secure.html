@@ -3,7 +3,6 @@
 </head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--     <link rel="icon" type="image/png" href="./assets/header/ravioli.png"/> -->
      <!-- <link rel="stylesheet" href="./CSS/base.css"/> -->
     <!-- <link rel="stylesheet" href="./CSS/index.css"/> -->
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.3/core.css">
@@ -20,11 +19,7 @@
         <button type="submit" id="submit token" pyclick="submit_token()">Submit</button>
     </form>
 </body>
-<script>
-    var form = document.getElementById('token form');
-    function handleForm(event) { event.preventDefault(); }
-    form.addEventListener("submit", handleForm);
-</script>
+<script src="./script.js"></script>
 <py-script>
     from js import document, console
     from pyodide.ffi import create_proxy

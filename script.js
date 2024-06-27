@@ -7,6 +7,9 @@ const WEB_URL = "https://sketcheddoughnut.github.io/SketchedDoughnut/";
 if (PAGE_URL.includes('colour.html')) {
     colorOnLoad();
 }
+else if (PAGE_URL.includes('secure.html')) {
+    secureOnLoad();
+}
 
 //////////////////// ALL LOADER FUNCTIONS ////////////////////
 // sets up things for the colors page upon call
@@ -20,4 +23,13 @@ function colorOnLoad() {
             }
         }
     });
+}
+
+// sets up things for the secure page upon call
+function secureOnLoad() {
+    var form = document.getElementById('token form');
+    function handleForm(event) { 
+        event.preventDefault();
+    }
+    form.addEventListener("submit", handleForm);
 }
