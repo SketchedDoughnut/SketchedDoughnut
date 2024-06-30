@@ -3,37 +3,43 @@
 </head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- <link rel="stylesheet" href="./CSS/base.css"/> -->
+    <!-- <link rel="stylesheet" href="./CSS/base.css"/> -->
     <!-- <link rel="stylesheet" href="./CSS/index.css"/> -->
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.3/core.css">
     <script type="module" src="https://pyscript.net/releases/2024.1.3/core.js"></script>
     <title>Secure</title>
 </head>
 <body>
-    <py-config id="c1">
-        packages = ['requests', 'cryptography']
-    </py-config>
-    <script id="c2" type="py" src="./pyscript/secure.py"></script> <!-- https://docs.pyscript.net/2024.3.1/user-guide/first-steps/ -->
-    <form id="token form">
-        <input type="text" id="input token" placeholder="input token">
-        <button type="submit" id="submit token" pyclick="submit_token()">Submit</button>
-    </form>
+    <div id="secure removal">
+        <py-config>
+            packages = ['requests', 'cryptography']
+        </py-config>
+        <script type="py" src="./pyscript/secure.py"></script> <!-- https://docs.pyscript.net/2024.3.1/user-guide/first-steps/ -->
+        <form id="token form">
+            <input type="text" id="input token" placeholder="input token">
+            <button type="submit" id="submit token" pyclick="submit_token()">Submit</button>
+        </form>
+    </div>
 </body>
-<script id="c3" src="./script.js"></script>
-<py-script id="c4">
-    from js import document, console, fetch
-    from pyodide.ffi import create_proxy
 
-    async def process_click(why):
-        await secure.load_data()
-        results = secure.submit_token()
-        if results == 'success':
-            await secure.inject_code()
-    
-    function_proxy = create_proxy(process_click)
-    submit_button = document.getElementById("token form")
-    submit_button.addEventListener("submit", function_proxy)
-    console.log('[PYTHON MANAGER] Created proxy')
-</py-script>
+<!-- scripting -->
+<div id="script removal">
+    <script src="./script.js"></script>
+    <py-script>
+        from js import document, console, fetch
+        from pyodide.ffi import create_proxy
+
+        async def process_click(why):
+            await secure.load_data()
+            results = secure.submit_token()
+            if results == 'success':
+                await secure.inject_code()
+        
+        function_proxy = create_proxy(process_click)
+        submit_button = document.getElementById("token form")
+        submit_button.addEventListener("submit", function_proxy)
+        console.log('[PYTHON MANAGER] Created proxy')
+    </py-script>
+</div>
 <div id="injection point"></div>
 </html>

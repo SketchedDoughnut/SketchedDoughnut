@@ -47,7 +47,8 @@ class Security_agent:
     
     # removes all elements from secure.html
     def remove_secure_elements(self):
-        element_ids = ['c1', 'c2', 'c3', 'c4', 'token form']
+        # element_ids = ['c1', 'c2', 'c3', 'c4', 'token form']
+        element_ids = ['secure removal', 'script removal']
         for id in element_ids:
             element = js.document.getElementById(id)
             element.remove()
@@ -59,6 +60,7 @@ class Security_agent:
         content = self.crypto_agent(self.data)
         element = js.document.getElementById('injection point')
         element.innerHTML = content
+        js.console.log('[PYTHON MANAGER] Content injected')
 
 ###########################################################################################################################
 
