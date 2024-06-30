@@ -10,26 +10,30 @@
     <title>Secure</title>
 </head>
 <body>
-    <py-config>
+    <py-config id="c1">
         packages = ['requests', 'cryptography']
     </py-config>
-    <script type="py" src="./pyscript/secure.py"></script> <!-- https://docs.pyscript.net/2024.3.1/user-guide/first-steps/ -->
+    <script id="c2" type="py" src="./pyscript/secure.py"></script> <!-- https://docs.pyscript.net/2024.3.1/user-guide/first-steps/ -->
     <form id="token form">
         <input type="text" id="input token" placeholder="input token">
         <button type="submit" id="submit token" pyclick="submit_token()">Submit</button>
     </form>
 </body>
-<script src="./script.js"></script>
-<py-script>
-    from js import document, console
+<script id="c3" src="./script.js"></script>
+<py-script id="c4">
+    from js import document, console, fetch
     from pyodide.ffi import create_proxy
 
-    def process_click(why):
-        secure.submit_token()
+    async def process_click(why):
+        await secure.load_data()
+        results = secure.submit_token()
+        if results == 'success':
+            await secure.inject_code()
     
     function_proxy = create_proxy(process_click)
     submit_button = document.getElementById("token form")
     submit_button.addEventListener("submit", function_proxy)
     console.log('[PYTHON MANAGER] Created proxy')
 </py-script>
+<div id="injection point"></div>
 </html>
