@@ -14,7 +14,8 @@ input_mode = 1
 if input_mode == 0:
     raw_data = input('-> ').encode()
 elif input_mode == 1:
-    f = open(r'other\app.html', 'r')
+    path = input('-> ')
+    f = open(path, 'r')
     raw_data = f.read()
     f.close()
     raw_data = raw_data.encode()
