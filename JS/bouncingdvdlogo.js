@@ -16,6 +16,7 @@ window.addEventListener('resize', function(event){
     MAX_HEIGHT = window.innerHeight
   });
 
+// stolen from another website I've worked on
 window.addEventListener('load', async function() 
     {   
         // set up DVD logo object
@@ -23,21 +24,15 @@ window.addEventListener('load', async function()
         dvd_logo.style.position = 'absolute'
 
         // set up direction constants
+        // https://stackoverflow.com/questions/294250/how-do-i-retrieve-an-html-elements-actual-width-and-height
         RIGHT = 'right'
         LEFT = 'left'
         UP = 'up'
         DOWN = 'down'
-
-        // set up max width and height
-        // MAX_WIDTH = this.screen.width
-        // MAX_HEIGHT = this.screen.height
-        MAX_WIDTH = window.innerWidth
-        MAX_HEIGHT = window.innerHeight
-
-        // get width and height of image
-        // https://stackoverflow.com/questions/294250/how-do-i-retrieve-an-html-elements-actual-width-and-height
         IMAGE_WIDTH = dvd_logo.getBoundingClientRect().width
         IMAGE_HEIGHT = dvd_logo.getBoundingClientRect().height
+        MAX_WIDTH = window.innerWidth
+        MAX_HEIGHT = window.innerHeight
 
         // set up current translate modes
         xTranslate = RIGHT
@@ -48,7 +43,7 @@ window.addEventListener('load', async function()
         yPos = 0
 
         // set up colors
-        colors = [
+        COLORS = [
             '#00feff',
             'red',
             'white',
@@ -83,10 +78,7 @@ window.addEventListener('load', async function()
             dvd_logo.style.top = yPos + 'px'
             
             // update color
-            if (collided == true) {
-                color = getRandomElementWithReduce(colors)
-                dvd_logo.contentDocument.querySelector('g').style.fill = color
-            }
+            if (collided == true) {dvd_logo.contentDocument.querySelector('g').style.fill = getRandomElementWithReduce(COLORS)}
 
             // debug section
             // console.log(collided)
