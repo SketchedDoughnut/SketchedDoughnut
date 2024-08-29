@@ -4,9 +4,8 @@ const WEB_URL = "https://sketcheddoughnut.github.io/SketchedDoughnut/";
 
 //////////////////// PRE-LOADING ////////////////////
 // detect page that they are on, run the loading function for that page
-if (PAGE_URL.includes('colour.html')) {
-    colorOnLoad();
-}
+if (PAGE_URL.includes('colour.html')) {colorOnLoad()}
+else if (PAGE_URL.includes('bouncingdvdlogo.html')) {colorOnLoad()}
 else if (PAGE_URL.includes('secure.html')) {
     secureOnLoad();
 }
