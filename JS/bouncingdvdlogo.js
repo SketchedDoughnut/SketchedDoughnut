@@ -1,9 +1,13 @@
+/////////////////////////////////////////////////////////////////////////////// to consider
+// https://stackoverflow.com/questions/52099450/how-to-draw-line-between-points-using-click-event-handler
 
+
+
+/////////////////////////////////////////////////////////////////////////////// tool functions
 // https://stackoverflow.com/questions/17883692/how-to-set-time-delay-in-javascript
 const delay = (delayinMs) => {
     return new Promise(resolve => setTimeout(resolve, delayinMs))
 }
-
 // https://www.geeksforgeeks.org/how-to-select-a-random-element-from-array-in-javascript/
 function getRandomElementWithReduce(array) {
     return array.reduce((selected, item) => {
@@ -16,6 +20,9 @@ window.addEventListener('resize', function(event){
     MAX_HEIGHT = window.innerHeight
   });
 
+
+
+/////////////////////////////////////////////////////////////////////////////// main functions (event listeners, etc)
 // stolen from another website I've worked on
 window.addEventListener('load', async function() 
     {   
@@ -51,6 +58,11 @@ window.addEventListener('load', async function()
             'green',
             'purple'
         ]
+        // set up any other variables
+        // points = [] // to append to list, (list).push((items))
+        // canvas = this.document.getElementById('canvas')
+        // context = canvas.getContext("2d");
+        // coord = {'x': xPos, 'y': yPos}
 
         // main loop
         while (true) { 
@@ -77,6 +89,15 @@ window.addEventListener('load', async function()
             dvd_logo.style.left = xPos + 'px'
             dvd_logo.style.top = yPos + 'px'
             
+            // line drawing
+            // coord = {'x': xPos, 'y': yPos}
+            // points.push(coord = {'x': xPos, 'y': yPos})
+            // var curr = points[max], prev = points[max - 1];
+            // context.beginPath()
+            // context.moveTo(prev.x, prev.y);
+            // context.lineTo(curr.x, curr.y);
+            // context.stroke();
+
             // update color
             if (collided == true) {dvd_logo.contentDocument.querySelector('g').style.fill = getRandomElementWithReduce(COLORS)}
 
@@ -85,7 +106,6 @@ window.addEventListener('load', async function()
 
             // delay
             await delay(1)
-            
         }
     }
 )
