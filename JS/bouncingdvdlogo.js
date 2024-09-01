@@ -99,7 +99,23 @@ window.addEventListener('load', async function()
             // context.stroke();
 
             // update color
-            if (collided == true) {dvd_logo.contentDocument.querySelector('g').style.fill = getRandomElementWithReduce(COLORS)}
+            if (collided == true) {
+                while (true) {
+                    currentColor = dvd_logo.contentDocument.querySelector('g').style.fill
+                    newColor = getRandomElementWithReduce(COLORS)
+                    if (currentColor == 'rgb(0, 254, 255)') {
+                        if (newColor == '#00feff') {
+                            // console.log('unique match found')
+                            continue
+                        }
+                    }
+                    if (currentColor != newColor) {
+                        // console.log(currentColor, newColor)
+                        break
+                    }
+                }
+                dvd_logo.contentDocument.querySelector('g').style.fill = newColor
+            }
 
             // debug section
             // console.log(collided)
