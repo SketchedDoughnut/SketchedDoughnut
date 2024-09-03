@@ -4,4 +4,18 @@ body {
 
 .svg {
     width: 15%;
+    
 }
+
+/* https://gist.github.com/23maverick23/64b3b587c88697558fac */
+/* https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting */
+/* .svg text {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
+}
+.svg text::selection {
+    background: none;
+} */
