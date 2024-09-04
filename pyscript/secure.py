@@ -14,14 +14,14 @@ class Security_agent:
     # when token is inputted, this function grabs it and checks if it is correct (hash digest comparison)
     async def submit_token(self, main_token_in: None | str = None, secondary_token_in: None | str = None):
         # fetch encrypted data from file
-        selection = js.document.getElementById('appload')
-        js.console.log(selection)
+        selection = js.document.getElementById('appload').value
+        js.console.log(f'[PYTHON MANAGER] Accessing page {selection}')
         # https://www.w3schools.com/jsref/dom_obj_select.asp
         # https://stackoverflow.com/questions/62798126/get-data-from-select-tag-using-javascript
         # file_extension = selection.options[selection.selectedIndex].value
 
         # encrypted_data = await js.fetch(f'./data/{file_extension}')
-        encrypted_data = await js.fetch(f'./data/base.data')
+        encrypted_data = await js.fetch(f'./data/{selection}')
         if encrypted_data.status != 200: return
         text_encrypted_data: str = await encrypted_data.text()
         encoded_encrypted_data = text_encrypted_data.encode()

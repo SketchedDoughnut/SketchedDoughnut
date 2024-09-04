@@ -4,8 +4,9 @@ import hashlib
 from rich import print
 
 # initial setup for secure info
-def setup_secure_info():
-    token = Fernet.generate_key()
+def setup_secure_info(manual_key: bytes | None = None):
+    if manual_key != None: token = manual_key
+    else: token = Fernet.generate_key()
     tool = Fernet(token)
     hashed_key = hashlib.sha256(token)
     digested_hash = hashed_key.digest()
@@ -40,4 +41,4 @@ def encrypt_data():
     f.write(decoded_secondary_encrypted)
     f.close()
     print(f'[green]wrote decoded encrypted data to file [purple]{output}: [red]{decoded_secondary_encrypted}')
-encrypt_data()
+setup_secure_info()
