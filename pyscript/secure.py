@@ -8,58 +8,54 @@ import asyncio
 # main operating class
 class Security_agent:
     def __init__(self):
-        # hash to compare to
-        self.SAVED_HASH = b'X\x8aiS\x8a\xcf!\x00\xca\xfe\xa1\xe3\x84\xb4\xban\x1e\x94\xbdz\x00k\x0f\xa2\xc8\xf9\xbbX\x94J\xcb\xbf'
-        self.hash_match = False
-
-    # loads the encrypted data from ./data/app.data
-    async def load_data(self):
-        encrypted_data = await js.fetch('./data/app.data')
-        if encrypted_data.status == 200:
-            # js.console.log(encrypted_data.text())
-            self.data = await encrypted_data.text()
-            self.data = self.data.encode()
+        self.main_hash = b'X\x8aiS\x8a\xcf!\x00\xca\xfe\xa1\xe3\x84\xb4\xban\x1e\x94\xbdz\x00k\x0f\xa2\xc8\xf9\xbbX\x94J\xcb\xbf' 
+        self.secondary_hash = b'\x18\x039\x10a8\x11\x0c\x89\x8b\xae\xfe\xeej\x8a\xc5\x16\xbe\x02,8i\x1d\x91\x93\x11_\xf1\x19\xf8\xc2\xf7'
 
     # when token is inputted, this function grabs it and checks if it is correct (hash digest comparison)
-    def submit_token(self):
-        # get token from form
-        token_input = js.document.getElementById("input token")
-        string_token: str = (token_input.value)
-        byte_token: bytes = string_token.encode()
+    async def submit_token(self, main_token_in: None | str = None, secondary_token_in: None | str = None):
+        # fetch encrypted data from file
+        selection = js.document.getElementById('appload')
+        js.console.log(selection)
+        # https://www.w3schools.com/jsref/dom_obj_select.asp
+        # https://stackoverflow.com/questions/62798126/get-data-from-select-tag-using-javascript
+        # file_extension = selection.options[selection.selectedIndex].value
+
+        # encrypted_data = await js.fetch(f'./data/{file_extension}')
+        encrypted_data = await js.fetch(f'./data/base.data')
+        if encrypted_data.status != 200: return
+        text_encrypted_data: str = await encrypted_data.text()
+        encoded_encrypted_data = text_encrypted_data.encode()
+
+        # get token from form, convert to bytes
+        if main_token_in == None: main_token_input = js.document.getElementById("main input token")
+        else: main_token_input = main_token_in
+        if secondary_token_in == None: secondary_token_input = js.document.getElementById('secondary input token')
+        else: secondary_token_input = secondary_token_in
+        main_token: str = main_token_input.value
+        secondary_token: str = secondary_token_input.value
+        bytes_main_token = main_token.encode()
+        bytes_secondary_token = secondary_token.encode()
 
         # compare hashed version of token with inputted, see if they match
-        hashed_token = hashlib.sha256(byte_token)
-        digested_token = hashed_token.digest()
-        if digested_token == self.SAVED_HASH:
-            js.console.log('[PYTHON MANAGER] Hashes match')
-            self.hash_match = True
-            self.token = byte_token
-            return 'success'
+        main_hashed_token = hashlib.sha256(bytes_main_token)
+        secondary_hashed_token = hashlib.sha256(bytes_secondary_token)
+        main_digested_token = main_hashed_token.digest()
+        secondary_digested_token = secondary_hashed_token.digest()
+        if main_digested_token != self.main_hash and secondary_digested_token != self.secondary_hash: return
+        js.console.log('[PYTHON MANAGER] Hashes match')
 
-    # decrypts the data inputted
-    def crypto_agent(self, data_in: bytes, mode: str = 'decrypt'):
-        if self.hash_match == True:
-           if mode == 'decrypt':
-            self.encryption_tool = Fernet(self.token)
-            decrypted = self.encryption_tool.decrypt(data_in)
-            raw = decrypted.decode()
-        return raw
-    
-    # removes all elements from secure.html
-    def remove_secure_elements(self):
-        # element_ids = ['c1', 'c2', 'c3', 'c4', 'token form']
-        element_ids = ['secure removal', 'script removal']
-        for id in element_ids:
-            element = js.document.getElementById(id)
-            element.remove()
+        # remove current elements on screen
+        for id in ['secure removal', 'script removal']: js.document.getElementById(id).remove()
         js.console.log('[PYTHON MANAGER] Secure elements removed')
 
-    # injects the decrypted data from ./data/app.data
-    async def inject_code(self):
-        self.remove_secure_elements()
-        content = self.crypto_agent(self.data)
-        element = js.document.getElementById('injection point')
-        element.innerHTML = content
+        # decrypt data
+        main_encryption_tool = Fernet(main_token)
+        secondary_encryption_tool = Fernet(secondary_token)
+        secondary_decrypted = secondary_encryption_tool.decrypt(encoded_encrypted_data)
+        main_decrypted = main_encryption_tool.decrypt(secondary_decrypted)
+        decoded = main_decrypted.decode()
+
+        js.document.getElementById('injection point').innerHTML = decoded
         js.console.log('[PYTHON MANAGER] Content injected')
 
 ###########################################################################################################################
@@ -70,3 +66,6 @@ class Security_agent:
 
 # object for initializing, yada yada
 secure = Security_agent()
+
+# if __name__ == '__main__':
+#     asyncio.run(secure.submit_token)
