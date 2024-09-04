@@ -41,4 +41,4 @@ def encrypt_data():
     f.write(decoded_secondary_encrypted)
     f.close()
     print(f'[green]wrote decoded encrypted data to file [purple]{output}: [red]{decoded_secondary_encrypted}')
-setup_secure_info()
+encrypt_data()
