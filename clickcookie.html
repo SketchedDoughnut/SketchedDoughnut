@@ -1,0 +1,93 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/base.css"/>
+    <script src="./JS/load.js"></script>
+    <script src="./JS/cookieclick.js"></script>
+    <title>Cookie Click</title>
+</head>
+<body></body>
+</html> -->
+
+<!-- written by ChatGPT -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Cookie Clicker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+        #cookie {
+            width: 200px;
+            height: 200px;
+            /*  */
+            /* background: url('https://www.clker.com/cliparts/e/6/a/a/120603383774631370cbd9492c5b9f0c7.png') no-repeat center center; */
+            /* image from: https://www.inkatrinaskitchen.com/cookie-monster-cookies/ */
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4E7XxiAlrFWoh7byyjEp4J6eA4Yo1dfEl9V-2gc4uav0WlKWG:https://3.bp.blogspot.com/-okeaImTxP6g/TeZPKv7nlKI/AAAAAAAAARo/zdMaRZGrryo/s640/Apri2011%2B049pwm.jpg&s') no-repeat center center;
+            background-size: cover;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+        #cookie-count {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        #upgrade {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Cookie Clicker</h1>
+    <div id="cookie"></div>
+    <div id="cookie-count">Cookies: 0</div>
+    <button id="upgrade">Upgrade (Cost: 50 cookies)</button>
+
+    <script>
+        let cookies = 0;
+        let cookiesPerClick = 1;
+        let upgradeCost = 50;
+        const cookieElement = document.getElementById('cookie');
+        const cookieCountElement = document.getElementById('cookie-count');
+        const upgradeButton = document.getElementById('upgrade');
+
+        function updateCookieCount() {
+            cookieCountElement.textContent = `Cookies: ${cookies}`;
+        }
+
+        function handleCookieClick() {
+            cookies += cookiesPerClick;
+            updateCookieCount();
+        }
+
+        function handleUpgrade() {
+            if (cookies >= upgradeCost) {
+                cookies -= upgradeCost;
+                cookiesPerClick *= 2;
+                upgradeCost *= 2;
+                upgradeButton.textContent = `Upgrade (Cost: ${upgradeCost} cookies)`;
+                updateCookieCount();
+            } else {
+                alert('Not enough cookies for upgrade!');
+            }
+        }
+
+        cookieElement.addEventListener('click', handleCookieClick);
+        upgradeButton.addEventListener('click', handleUpgrade);
+
+        updateCookieCount();
+    </script>
+</body>
+</html>
