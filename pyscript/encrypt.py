@@ -3,6 +3,7 @@ from cryptography.fernet import Fernet
 import hashlib
 from rich import print
 
+
 # initial setup for secure info
 def setup_secure_info(manual_key: bytes | None = None):
     if manual_key != None: token = manual_key
@@ -85,4 +86,4 @@ def encrypt_data():
         f.close()
         print(f'[green]wrote decoded encrypted data to file [purple]{output}: [red]{decoded_secondary_encrypted}')
 
-encrypt_data()
+    encrypt_data()

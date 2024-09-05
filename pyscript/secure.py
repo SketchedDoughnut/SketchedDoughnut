@@ -1,8 +1,7 @@
-import requests
+# import requests
 from cryptography.fernet import Fernet
 import js
 import hashlib
-import asyncio
 # import shelve # what is this?
 
 # main operating class
@@ -72,4 +71,5 @@ class Security_agent:
 secure = Security_agent()
 
 # if __name__ == '__main__':
-#     asyncio.run(secure.submit_token)
+#     from asyncio import run
+#     run(secure.submit_token)
