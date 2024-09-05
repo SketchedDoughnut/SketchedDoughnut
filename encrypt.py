@@ -16,8 +16,13 @@ def encrypt_data():
     # get text inputs
     source = input('please input the source path: ')
     output = input('please input the output path: ')
-    main_key = input('please input the main key: ')
-    secondary_key = input('please input the secondary key: ')
+    try: 
+        from hidden.secret import keys, PRIMARY, SECONDARY
+        main_key = keys[PRIMARY]
+        secondary_key = keys[SECONDARY]
+    except:
+        main_key = input('please input the main key: ')
+        secondary_key = input('please input the secondary key: ')
     encrypt_or_decrypt = input('please choose to encrypt (e), decrypt (d), recompile (r): ').lower()
 
     # create tools

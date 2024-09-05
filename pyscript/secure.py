@@ -55,7 +55,11 @@ class Security_agent:
         main_decrypted = main_encryption_tool.decrypt(secondary_decrypted)
         decoded = main_decrypted.decode()
 
-        js.document.getElementById('injection point').innerHTML = decoded
+        # https://stackoverflow.com/questions/24442991/javascript-html-clear-all-current-content-and-load-new-content-in-the-same-window
+        # https://stackoverflow.com/questions/12073032/injected-javascript-does-not-execute
+        # js.document.getElementById('injection point').innerHTML = decoded
+        # js.document.body.innerHTML=decoded
+        js.document.write(decoded)
         js.console.log('[PYTHON MANAGER] Content injected')
 
 ###########################################################################################################################

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- linking scripts and whatnot -->
 </head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +10,17 @@
     <script type="module" src="https://pyscript.net/releases/2024.1.3/core.js"></script>
     <title>Secure</title>
 </head>
+
+<!-- body containing main contents -->
 <body>
-    <h1 id="loading">Loading /^w^/</h1>
-    <div id="secure removal" class="hidden">
+    <h1 id="loading">Loading /^w^/</h1> <!-- is deleted once page is done loading -->
+    <div id="secure removal" class="hidden"> <!-- is removed upon successful access -->
+        <!-- linking pyscript packages -->
         <py-config>
             packages = ['requests', 'cryptography']
         </py-config>
         <script type="py" src="./pyscript/secure.py"></script> <!-- https://docs.pyscript.net/2024.3.1/user-guide/first-steps/ -->
+        <!-- getting tokens and selection -->
         <form id="token form">
             <input type="text" id="main input token" placeholder="main input token">
             <input type="text" id="secondary input token" placeholder="secondary input token">
@@ -28,8 +34,8 @@
     </div>
 </body>
 
-<!-- scripting -->
-<div id="script removal">
+<!-- script for setting up pyscript and removing some elements -->
+<div id="script removal"> <!-- is removed upon successful access -->
     <script src="./JS/load.js"></script>
     <py-script>
         from js import document, console, fetch
