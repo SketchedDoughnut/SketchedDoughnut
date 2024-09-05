@@ -86,4 +86,4 @@ def encrypt_data():
         f.close()
         print(f'[green]wrote decoded encrypted data to file [purple]{output}: [red]{decoded_secondary_encrypted}')
 
-    encrypt_data()
+encrypt_data()
