@@ -2,7 +2,7 @@
 from cryptography.fernet import Fernet
 import hashlib
 from rich import print
-
+from os import remove
 
 # initial setup for secure info
 def setup_secure_info(manual_key: bytes | None = None):
@@ -25,6 +25,7 @@ def encrypt_data():
         main_key = input('please input the main key: ')
         secondary_key = input('please input the secondary key: ')
     encrypt_or_decrypt = input('please choose to encrypt (e), decrypt (d), recompile (r): ').lower()
+    remove_source = input('remove source? (y/n): ').lower()
 
     # create tools
     main_tool = Fernet(main_key)
@@ -85,5 +86,9 @@ def encrypt_data():
         f.write(decoded_secondary_encrypted)
         f.close()
         print(f'[green]wrote decoded encrypted data to file [purple]{output}: [red]{decoded_secondary_encrypted}')
-
+    
+    if remove_source == 'y':
+        remove(source)
+        print(f'[green] removed [purple]{source}')
+    
 encrypt_data()
