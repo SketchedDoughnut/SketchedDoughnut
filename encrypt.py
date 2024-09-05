@@ -2,7 +2,8 @@
 from cryptography.fernet import Fernet
 import hashlib
 from rich import print
-from os import remove
+from os import remove, path
+import json
 
 # initial setup for secure info
 def setup_secure_info(manual_key: bytes | None = None):
@@ -17,13 +18,17 @@ def encrypt_data():
     # get text inputs
     source = input('please input the source path: ')
     output = input('please input the output path: ')
-    try: 
+    if path.exists('hidden'): 
         from hidden.secret import keys, PRIMARY, SECONDARY
         main_key = keys[PRIMARY]
         secondary_key = keys[SECONDARY]
-    except:
-        main_key = input('please input the main key: ')
-        secondary_key = input('please input the secondary key: ')
+    else:
+        # main_key = input('please input the main key: ')
+        # secondary_key = input('please input the secondary key: ')
+        keys = input('please input the key dictionary: ')
+        keys = eval(keys) # UHOH BE CAREFUL AAAAAAAAAAAAAAAAAAAAAAAAAA
+        main_key = keys[0]
+        secondary_key = keys[1]
     encrypt_or_decrypt = input('please choose to encrypt (e), decrypt (d), recompile (r): ').lower()
     remove_source = input('remove source? (y/n): ').lower()
 
