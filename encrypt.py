@@ -4,6 +4,7 @@ import hashlib
 from rich import print
 from os import remove, path
 import json
+import pickle
 
 # initial setup for secure info
 def setup_secure_info(manual_key: bytes | None = None):
@@ -24,8 +25,8 @@ def encrypt_data():
         secondary_key = keys[SECONDARY]
     else:
         # main_key = input('please input the main key: ')
-        # secondary_key = input('please input the secondary key: ')
-        keys = input('please input the key dictionary: ')
+        # secondary_key = input('please input the secondary key: 
+        keys = input('please input the key data: ')
         keys = eval(keys) # UHOH BE CAREFUL AAAAAAAAAAAAAAAAAAAAAAAAAA
         main_key = keys[0]
         secondary_key = keys[1]
