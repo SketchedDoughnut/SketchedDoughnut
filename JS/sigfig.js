@@ -169,27 +169,19 @@ function clickmeuwu() {
         // console.log('contains non zero, ' + containsNonZero)
         // console.log('contains decimal, ' + containsDecimal)
         // console.log('leading zeros, ' + leadingZeros)
-        // // NOT YET
-        console.log('entered zero zone, ' + enteredZeroZone)
-        console.log('current count, ' + currentCount)
-        console.log('saved count, ' + saveCount)
+        // console.log('entered zero zone, ' + enteredZeroZone)
+        // console.log('current count, ' + currentCount)
+        // console.log('saved count, ' + saveCount)
+        // NOT YET
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// POST LOOP LOGIC
 
     // if the current one is zero, revert currentCount to the saved point (we never reached another nonzero number) and display, then return
-    if (currentIsZero) {
-        saveCount
+    if (currentIsZero || enteredZeroZone) {
         display('the amount of significant figures is ' + saveCount)
-        return
     }
     else {
         display('the amount of significant figures is ' + currentCount)
-        return
     }
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// evaluation and outputting results
-
-    return  
 }
