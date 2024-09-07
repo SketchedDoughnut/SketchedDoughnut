@@ -22,6 +22,7 @@ function clickmeuwu() {
         '8',
         '9'
     ]
+    const allowedChars = '.0123456789'
 
     //// set up flags
     // contains (blank)
@@ -34,8 +35,7 @@ function clickmeuwu() {
     // markers
     let leadingZeros = false
     let encounteredNonZeros = false
-    let beforeDecimal = true
-    let afterDecimal = false
+    let passedDecimal = false
     let startingCount = false
     let enteredZeroZone = false
     // running count
@@ -50,27 +50,30 @@ function clickmeuwu() {
     let splitInput = inputSigFig.split('') // https://stackoverflow.com/questions/6484670/how-do-i-split-a-string-into-an-array-of-characters
 
     // check if it contains a decimal
-    if (inputSigFig.includes('.')) {
-        containsDecimal = true
-    }
+    containsDecimal = inputSigFig.includes('.')
     
     // check if it contains a zero
-    if (inputSigFig.includes('0')) {
-        containsZero = true
-    }
-    // if it does not contain a zero, just display the length of the current text then return so the code does not continue on
-    else {
-        display('the amount of significant figures is ' + inputSigFig.length)
+    containsZero = inputSigFig.includes('0')
+
+    // if the message is only a period, return error
+    if (inputSigFig == ".") {
+        display('that is not a number!')
         return
     }
 
     // check if it contains a non zero
-    nonZeros.forEach(element => {
+    // nonZeros.forEach(element => {
+    splitInput.forEach(element => {
         if (element != 0) {
             containsNonZero = true
         }
+        let allowedState = allowedChars.includes(element)
+        if (!allowedState) {
+            display('only characters allowed are: ' + allowedChars)
+            return
+        }
     });
-
+    
     // iterate through, selecting a character
     for (let topIndex = 0; topIndex < splitInput.length; topIndex++) {
 
@@ -79,10 +82,9 @@ function clickmeuwu() {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// DETECTING THINGS
 
-        // if character is the decimal, beforeDecimal = false. afterDecimal = true. continue
+        // if character is the decimal, passedDecimal = true. continue
         if (character == '.') {
-            beforeDecimal = false
-            afterDecimal = true
+            passedDecimal = true
             continue
         }
 
@@ -93,13 +95,10 @@ function clickmeuwu() {
         }
 
         // if the current is not zero, currentIsNotZero = true. currentIsZero = false
+        // if current is not zero, encounteredNonZeros = true
         if (character != '0') {
             currentIsNotZero = true
             currentIsZero = false
-        }
-
-        // if current is not zero, encounteredNonZeros = true
-        if (character != '0') {
             encounteredNonZeros = true
         }
 
@@ -116,9 +115,7 @@ function clickmeuwu() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// USING LOGIC TO UPDATE COUNT
 
         // if leadingZeros is true, dont count and instead just pass
-        if (leadingZeros) {
-            continue
-        }
+        if (leadingZeros) {continue}
         
         // if we are out of any leading zeros
         else {
@@ -161,7 +158,7 @@ function clickmeuwu() {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// DEBUG LOGGING
 
-        console.log('current is ' + character + ', and below are the states')
+        // console.log('current is ' + character + ', and below are the states')
         // // WORKS
         // console.log('current is zero, ' + currentIsZero)
         // console.log('current is not zero, ' + currentIsNotZero)
