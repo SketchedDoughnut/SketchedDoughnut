@@ -61,6 +61,15 @@ class Security_agent:
         js.document.write(decoded)
         js.console.log('[PYTHON MANAGER] Content injected')
 
+        scripts = js.document.getElementsByTagName('script')
+        for script in scripts:
+            old_script_value = script.innerHTML # https://stackoverflow.com/questions/9333914/get-content-inside-script-as-text
+            script.remove()
+            new_script = js.document.createElement('script')
+            new_script.innerHTML = old_script_value
+            js.document.body.appendChild(new_script) # https://www.w3schools.com/jsref/prop_doc_body.asp
+        js.console.log('[PYTHON MANAGER] Reinjected scripts')
+
 ###########################################################################################################################
 
 # DATA = b'gAAAAABmfRC9d-LdYJmFu_v6ihv04d3tQXIVrUu4JTrI2EPSuSLgc5DJ2Jxm-ANgoe7ynl2J_qW1XozQZK5b2G6dVCFjhMmyJZcGiSfrOIujRMnlf84rgtgbUeBKQyPCeK_GBgiPfZcH'
