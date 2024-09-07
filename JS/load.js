@@ -9,10 +9,23 @@ window.addEventListener('load', async function()
         if (PAGE_URL.includes('colour.html')) {colorOnLoad()}
         if (PAGE_URL.includes('bouncingdvdlogo.html')) {colorOnLoad()}
         if (PAGE_URL.includes('secure.html')) {secureOnLoad()}
+        if (PAGE_URL.includes('sigfig.html')) {sigFigOnLoad()}
     }
 )
 
 //////////////////// ALL LOADER FUNCTIONS ////////////////////
+// disables page refresh
+function disablePageRefreshOnSubmit(element_to_add) {
+    function handleForm(event) { 
+        event.preventDefault();
+    }
+    element_to_add.addEventListener('submit', handleForm)
+}
+// sets up things for the sigFig page on call
+function sigFigOnLoad() {
+    submission_form = document.getElementById("sigFigInput")
+    disablePageRefreshOnSubmit(submission_form)
+}
 // sets up things for the colors page upon call
 function colorOnLoad() {
     document.addEventListener('dblclick', () => {
@@ -29,9 +42,7 @@ function colorOnLoad() {
 // sets up things for the secure page upon call
 function secureOnLoad() {
     var form = document.getElementById('token form');
-    function handleForm(event) { 
-        event.preventDefault();
-    }
+    disablePageRefreshOnSubmit(form)
     options = [
         ['base.data', 'Base'], 
         ['sl_comm.data', 'TBD'], 
@@ -49,5 +60,4 @@ function secureOnLoad() {
         selections_input.value = filename
         appload.append(selections_input)
     }
-    form.addEventListener("submit", handleForm);
 }
