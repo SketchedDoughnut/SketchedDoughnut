@@ -5,7 +5,7 @@
 </head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSS/base.css"/>
+    <link rel="stylesheet" href="../CSS/base.css"/>
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.3/core.css">
     <script type="module" src="https://pyscript.net/releases/2024.1.3/core.js"></script>
     <title>Secure</title>
@@ -19,7 +19,7 @@
         <py-config>
             packages = ['requests', 'cryptography']
         </py-config>
-        <script type="py" src="./pyscript/secure.py"></script> <!-- https://docs.pyscript.net/2024.3.1/user-guide/first-steps/ -->
+        <script type="py" src="../pyscript/secure.py"></script> <!-- https://docs.pyscript.net/2024.3.1/user-guide/first-steps/ -->
         <!-- getting tokens and selection -->
         <form id="token form">
             <input type="text" id="main input token" placeholder="main input token">
@@ -32,7 +32,7 @@
 
 <!-- script for setting up pyscript and removing some elements -->
 <div id="script removal"> <!-- is removed upon successful access -->
-    <script src="./JS/load.js"></script>
+    <script src="../JS/load.js"></script>
     <py-script>
         from js import document, console, fetch
         from pyodide.ffi import create_proxy
