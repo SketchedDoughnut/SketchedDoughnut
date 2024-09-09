@@ -53,10 +53,9 @@ function secureOnLoad() {
     for (let iter = 0; iter < options.length; iter++) {
         selection = options[iter]
         filename = selection[0]
-        displayname = selection[1]
+        displayName = selection[1]
         selections_input = document.createElement('option')
-        // selections_input.setAttribute('value', filename)
-        selections_input.textContent = displayname
+        selections_input.textContent = displayName
         selections_input.value = filename
         appload.append(selections_input)
     }

@@ -11,15 +11,16 @@ class Security_agent:
         self.secondary_hash = b'\x18\x039\x10a8\x11\x0c\x89\x8b\xae\xfe\xeej\x8a\xc5\x16\xbe\x02,8i\x1d\x91\x93\x11_\xf1\x19\xf8\xc2\xf7'
 
     # when token is inputted, this function grabs it and checks if it is correct (hash digest comparison)
-    async def submit_token(self, main_token_in: None | str = None, secondary_token_in: None | str = None):
+    async def submit_token(self, 
+                           main_token_in: str = None, 
+                           secondary_token_in: str = None,
+                           overrideFile: str = None
+                           ):
         # fetch encrypted data from file
         selection = js.document.getElementById('appload').value
         js.console.log(f'[PYTHON MANAGER] Accessing page {selection}')
-        # https://www.w3schools.com/jsref/dom_obj_select.asp
-        # https://stackoverflow.com/questions/62798126/get-data-from-select-tag-using-javascript
-        # file_extension = selection.options[selection.selectedIndex].value
 
-        # encrypted_data = await js.fetch(f'./data/{file_extension}')
+        # access the list of file contents to decrypt 
         encrypted_data = await js.fetch(f'./data/{selection}')
         if encrypted_data.status != 200: return
         text_encrypted_data: str = await encrypted_data.text()
