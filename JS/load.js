@@ -47,7 +47,8 @@ function secureOnLoad() {
         ['base.data', 'Base'], 
         ['sl_comm.data', 'TBD'], 
         ['cook.data', 'Cook'],
-        ['save.data', 'Save']
+        ['save.data', 'Save'],
+        ['down.data', 'Down']
     ]
     appload = document.getElementById('appload')
     for (let iter = 0; iter < options.length; iter++) {

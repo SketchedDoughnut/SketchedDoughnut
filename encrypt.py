@@ -19,6 +19,9 @@ def encrypt_data():
     # get text inputs
     source = input('please input the source path: ')
     output = input('please input the output path: ')
+    incorporate_python = input('is there a python file to link into pyscript? (y/n): ').lower() == 'y'
+    if incorporate_python:
+        inlay_python = input('enter relative path: ')
     if path.exists('hidden'): 
         from hidden.secret import keys, PRIMARY, SECONDARY
         main_key = keys[PRIMARY]
