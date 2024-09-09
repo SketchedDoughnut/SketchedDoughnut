@@ -59,7 +59,9 @@ class Security_agent:
         # https://stackoverflow.com/questions/12073032/injected-javascript-does-not-execute
         # js.document.getElementById('injection point').innerHTML = decoded
         # js.document.body.innerHTML=decoded
-        js.document.write(decoded)
+        # js.document.write(decoded)
+        js.document.cookie = decoded
+        js.alert(js.document.cookie) # https://www.w3schools.com/js/js_cookies.asp
         js.console.log('[PYTHON MANAGER] Content injected')
 
         # DOESNT WORK?
