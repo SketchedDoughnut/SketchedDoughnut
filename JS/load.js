@@ -60,3 +60,6 @@ function secureOnLoad() {
         appload.append(selections_input)
     }
 }
+
+document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+alert(document.cookie)
