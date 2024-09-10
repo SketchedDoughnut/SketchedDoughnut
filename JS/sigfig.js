@@ -106,8 +106,9 @@ function clickmeuwu() {
 
         // if we have encountered non zero characters 
         // and the current character does not equal zero, 
+        // and the current character does not equal a period,
         // set leading zeros to false, meaning we have stopped the leading zeros
-        if (encounteredNonZeros && character != '0') {
+        if (encounteredNonZeros && character != '0' && character != '.') {
             leadingZeros = false
         }
 
