@@ -4,7 +4,7 @@ import hashlib
 from rich import print
 from os import remove, path
 import json
-import pickle
+import pickle # haha pickle
 
 # initial setup for secure info
 def setup_secure_info(manual_key: bytes | None = None):

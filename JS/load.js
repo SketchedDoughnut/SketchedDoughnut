@@ -47,8 +47,7 @@ function secureOnLoad() {
         ['base.data', 'Base'], 
         ['sl_comm.data', 'TBD'], 
         ['cook.data', 'Cook'],
-        ['save.data', 'Save'],
-        ['down.data', 'Down']
+        ['save.data', 'Save'],  
     ]
     appload = document.getElementById('appload')
     for (let iter = 0; iter < options.length; iter++) {
@@ -61,6 +60,3 @@ function secureOnLoad() {
         appload.append(selections_input)
     }
 }
-
-// document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
-// alert(document.cookie)
