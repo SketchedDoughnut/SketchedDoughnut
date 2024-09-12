@@ -8,6 +8,13 @@ function display(text) {
     outputText.innerText = text
 }
 
+// function for toggling what is hidden and what is shown
+// called on from button clicks
+function toggleHidden(element) {
+    document.getElementById(element).classList.toggle('hidden')
+}
+
+
 // main function
 function clickmeuwu() {
     // set up constants
@@ -159,9 +166,10 @@ function clickmeuwu() {
     // display the save state as we ignore the zeros at the end
     if (!containsDecimal && enteredZeroZone) {
         display('the amount of significant figures is: ' + saveCount)
-        return
+        return saveCount
     }
     else {
         display('the amount of significant figures is: ' + currentCount)
+        return currentCount
     }
 }

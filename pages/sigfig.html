@@ -15,9 +15,20 @@
 
 
 <body">
-    <form id="sigFigInput">
+
+<!-- for selecting what thing to display -->
+<div id="options">
+    <form>
+        <button type="submit" onclick="toggleHidden('sigFigInput')">calculate significant figures</button>
+    </form>
+    <p id="results"></p>
+</div>
+
+    <!-- for calculating significant figures -->
+    <form id="sigFigInput" class="hidden">
             <input type="text" id="sigFig" placeholder="sig Fig goes here">
         <button type="submit" onclick="clickmeuwu()">Submit</button>
     </form>
-    <p id="results"></p>
+
+    <form</form>
 </body>
