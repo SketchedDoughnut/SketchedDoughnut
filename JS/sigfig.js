@@ -2,6 +2,11 @@
 // woah more stuff
 // https://meetanshi.com/blog/reload-current-page-without-losing-any-form-data-in-javascript/#:~:text=The%20easiest%20way%20to%20reload,used%20programming%20languages%20by%20developers.
 
+// assign variables
+let hiddenDict = {
+    sigFigInputDiv: [true]
+}
+
 // displays text to the output
 function display(text, append = false) {
     if (append) {
@@ -16,13 +21,16 @@ function display(text, append = false) {
 // called on from button clicks
 function toggleHidden(element) {
     document.getElementById(element).classList.toggle('hidden')
+    hiddenDict.sigFigInputDiv = [document.getElementById(elment).classList.contains('hidden')]
 }
 
 // clears all text inputs
 // does not refresh page tho :D
 function clearInput() {
-    document.getElementById('sigFig').value = ''
-    display('')
+    if (hiddenDict.sigFigInputDiv) {
+        document.getElementById('sigFig').value = ''
+        display('')
+    }
 }
 
 // disable refreshing page for every form
