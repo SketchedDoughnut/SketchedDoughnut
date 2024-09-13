@@ -18,6 +18,13 @@ function toggleHidden(element) {
     document.getElementById(element).classList.toggle('hidden')
 }
 
+// clears all text inputs
+// does not refresh page tho :D
+function clearInput() {
+    document.getElementById('sigFig').value = ''
+    display('')
+}
+
 // disable refreshing page for every form
 // runs on load of things
 window.addEventListener('load', function() {
