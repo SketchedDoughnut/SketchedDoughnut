@@ -3,6 +3,7 @@
 // https://meetanshi.com/blog/reload-current-page-without-losing-any-form-data-in-javascript/#:~:text=The%20easiest%20way%20to%20reload,used%20programming%20languages%20by%20developers.
 
 // assign variables
+// https://stackoverflow.com/questions/3559070/are-there-dictionaries-in-javascript-like-python
 let hiddenDict = {
     sigFigInputDiv: [true]
 }
