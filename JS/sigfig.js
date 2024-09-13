@@ -13,6 +13,12 @@ function toggleHidden(element) {
     document.getElementById(element).classList.toggle('hidden')
 }
 
+// disable refreshing page for every form
+// runs on load of things
+window.addEventListener('load', function() {
+    disablePageRefreshOnSubmit(document.getElementById('options'))
+    disablePageRefreshOnSubmit(document.getElementById('sigFigInput'))
+})
 
 // function for calculating how many
 // significany figures are in a number
