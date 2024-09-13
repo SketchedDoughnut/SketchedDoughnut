@@ -18,12 +18,12 @@
     <!-- for selecting what thing to display -->
     <div id="options">
         <form>
-            <button type="submit" onclick="toggleHidden('sigFigInput')">calculate significant figures</button>
+            <button type="submit" onclick="toggleHidden('sigFigInputDiv')">calculate significant figures</button>
         </form>
     </div>
 
      <!-- for calculating significant figures given one number -->
-    <div class="hidden">
+    <div class="hidden" id='sigFigInputDiv'>
         <p>
             This is a calculator that can tell you how many significant figures are in a single number! <br>
             The only characters allowed are: <b>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, and periods</b>
