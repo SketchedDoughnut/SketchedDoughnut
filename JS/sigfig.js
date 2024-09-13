@@ -3,8 +3,13 @@
 // https://meetanshi.com/blog/reload-current-page-without-losing-any-form-data-in-javascript/#:~:text=The%20easiest%20way%20to%20reload,used%20programming%20languages%20by%20developers.
 
 // displays text to the output
-function display(text) {
-    document.getElementById('sigfig calculation results').innerText = 'Results: ' + text
+function display(text, append = false) {
+    if (append) {
+        document.getElementById('sigfig calculation results').innerText += text
+    }
+    else {
+        document.getElementById('sigfig calculation results').innerText = 'Results: ' + text
+    }
 }
 
 // function for toggling what is hidden and what is shown
@@ -58,12 +63,16 @@ function clickmeuwu() {
     containsZero = inputSigFig.includes('0')
 
     // if the message does not contain a valid character, error then return
+    let foundInvalidChar = false
     splitInput.forEach(element => {
-        if (!(allowedChars.includes(element))) {
-            display('invalid characters included!')
-            return
+        if (!allowedChars.includes(element)) {
+            foundInvalidChar = true
         }
-    })
+    }) // why in the world do I have to do this :C
+    if (foundInvalidChar) {
+        display('invalid characters included!')
+        return
+    }
 
     // if the message is only decimals, error then return
     onlyDecimalChar = true
