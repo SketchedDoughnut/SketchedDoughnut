@@ -4,8 +4,7 @@
 
 // displays text to the output
 function display(text) {
-    const outputText = document.getElementById('results')
-    outputText.innerText = text
+    document.getElementById('sigfig calculation results').innerText = 'Results: ' + text
 }
 
 // function for toggling what is hidden and what is shown
@@ -15,7 +14,8 @@ function toggleHidden(element) {
 }
 
 
-// main function
+// function for calculating how many
+// significany figures are in a number
 function clickmeuwu() {
     // set up constants
     const allowedChars = '.0123456789'
