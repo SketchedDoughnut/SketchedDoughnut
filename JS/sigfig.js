@@ -4,9 +4,9 @@
 
 // assign variables
 // https://stackoverflow.com/questions/3559070/are-there-dictionaries-in-javascript-like-python
-let hiddenDict = {
-    sigFigInputDiv: [true]
-}
+// let hiddenDict = {
+//     sigFigInputDiv: [true]
+// }
 
 // displays text to the output
 function display(text, append = false) {
@@ -22,7 +22,7 @@ function display(text, append = false) {
 // called on from button clicks
 function toggleHidden(element) {
     document.getElementById(element).classList.toggle('hidden')
-    hiddenDict.sigFigInputDiv = [document.getElementById(elment).classList.contains('hidden')]
+    // hiddenDict.sigFigInputDiv = [document.getElementById(element).classList.contains('hidden')]
 }
 
 // clears all text inputs
