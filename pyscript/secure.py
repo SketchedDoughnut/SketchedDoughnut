@@ -10,6 +10,9 @@ class Security_agent:
         self.main_hash = b'X\x8aiS\x8a\xcf!\x00\xca\xfe\xa1\xe3\x84\xb4\xban\x1e\x94\xbdz\x00k\x0f\xa2\xc8\xf9\xbbX\x94J\xcb\xbf' 
         self.secondary_hash = b'\x18\x039\x10a8\x11\x0c\x89\x8b\xae\xfe\xeej\x8a\xc5\x16\xbe\x02,8i\x1d\x91\x93\x11_\xf1\x19\xf8\xc2\xf7'
 
+    def setError(self, text):
+        js.document.getElementById('errorText').innerText = text
+
     # when token is inputted, this function grabs it and checks if it is correct (hash digest comparison)
     async def submit_token(self, 
                            main_token_in: str = None, 
@@ -21,8 +24,10 @@ class Security_agent:
         js.console.log(f'[PYTHON MANAGER] Accessing page {selection}')
 
         # access the list of file contents to decrypt 
-        encrypted_data = await js.fetch(f'./data/{selection}')
-        if encrypted_data.status != 200: return
+        encrypted_data = await js.fetch(f'../data/{selection}')
+        if encrypted_data.status != 200: 
+            self.setError(f'error accessing file contents: {encrypted_data.status}')
+            return
         text_encrypted_data: str = await encrypted_data.text()
         encoded_encrypted_data = text_encrypted_data.encode()
 
@@ -82,6 +87,7 @@ class Security_agent:
 
 # object for initializing, yada yada
 secure = Security_agent()
+
 
 # if __name__ == '__main__':
 #     from asyncio import run

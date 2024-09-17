@@ -21,11 +21,13 @@ function disablePageRefreshOnSubmit(element_to_add) {
     }
     element_to_add.addEventListener('submit', handleForm)
 }
+
 // sets up things for the sigFig page on call
 function sigFigOnLoad() {
     submission_form = document.getElementById("sigFigInput")
     disablePageRefreshOnSubmit(submission_form)
 }
+
 // sets up things for the colors page upon call
 function colorOnLoad() {
     document.addEventListener('dblclick', () => {
