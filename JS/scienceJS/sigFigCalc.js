@@ -1,49 +1,6 @@
-// idk stuff goes here
-// woah more stuff
-// https://meetanshi.com/blog/reload-current-page-without-losing-any-form-data-in-javascript/#:~:text=The%20easiest%20way%20to%20reload,used%20programming%20languages%20by%20developers.
-
-// assign variables
-// https://stackoverflow.com/questions/3559070/are-there-dictionaries-in-javascript-like-python
-// let hiddenDict = {
-//     sigFigInputDiv: [true]
-// }
-
-// displays text to the output
-function display(text, append = false) {
-    if (append) {
-        document.getElementById('sigfig calculation results').innerText += text
-    }
-    else {
-        document.getElementById('sigfig calculation results').innerText = 'Results: ' + text
-    }
-}
-
-// function for toggling what is hidden and what is shown
-// called on from button clicks
-function toggleHidden(element) {
-    document.getElementById(element).classList.toggle('hidden')
-    // hiddenDict.sigFigInputDiv = [document.getElementById(element).classList.contains('hidden')]
-}
-
-// clears all text inputs
-// does not refresh page tho :D
-function clearInput() {
-    if (hiddenDict.sigFigInputDiv) {
-        document.getElementById('sigFig').value = ''
-        display('')
-    }
-}
-
-// disable refreshing page for every form
-// runs on load of things
-window.addEventListener('load', function() {
-    disablePageRefreshOnSubmit(document.getElementById('options'))
-    disablePageRefreshOnSubmit(document.getElementById('sigFigInput'))
-})
-
 // function for calculating how many
 // significany figures are in a number
-function clickmeuwu() {
+function clickmeuwu(value = null) {
     // set up constants
     const allowedChars = '.0123456789'
 
@@ -66,10 +23,13 @@ function clickmeuwu() {
     let currentCount = 0
 
     // reset display
-    display('')
+    display(sigFigOutput, '')
 
     // get data, and split into list of each character
-    let inputSigFig = document.getElementById('sigFig').value
+    let inputSigFig = document.getElementById(sigFigInput).value
+    if (!(value == null)) {
+        inputSigFig = value
+    }
     let splitInput = inputSigFig.split('') // https://stackoverflow.com/questions/6484670/how-do-i-split-a-string-into-an-array-of-characters
 
     // check if it contains a decimal
@@ -86,7 +46,7 @@ function clickmeuwu() {
         }
     }) // why in the world do I have to do this :C
     if (foundInvalidChar) {
-        display('invalid characters included!')
+        display(sigFigOutput, 'invalid characters included!')
         return
     }
 
@@ -98,7 +58,7 @@ function clickmeuwu() {
         }
     })
     if (onlyDecimalChar) {
-        display('there is only decimal points here!')
+        display(sigFigOutput, 'there is only decimal points here!')
         return
     }
 
@@ -109,7 +69,7 @@ function clickmeuwu() {
         }
         let allowedState = allowedChars.includes(element)
         if (!allowedState) {
-            display('only characters allowed are: ' + allowedChars)
+            display(sigFigOutput, 'only characters allowed are: ' + allowedChars)
             return
         }
     });
@@ -196,11 +156,11 @@ function clickmeuwu() {
     // and if we are in a zero zone
     // display the save state as we ignore the zeros at the end
     if (!containsDecimal && enteredZeroZone) {
-        display('the amount of significant figures is: ' + saveCount)
+        display(sigFigOutput, 'the amount of significant figures is: ' + saveCount)
         return saveCount
     }
     else {
-        display('the amount of significant figures is: ' + currentCount)
+        display(sigFigOutput, 'the amount of significant figures is: ' + currentCount)
         return currentCount
     }
 }
