@@ -56,11 +56,7 @@ function createField() {
 }
 
 // resets the whole form
-function resetForm() {
-    for (let iter = 0; iter < currentDivCount; iter++) {
-        document.getElementById('removal-div-' + iter).remove()
-    }
-}
+function resetForm() { for (let iter = 0; iter < currentDivCount; iter++) { document.getElementById('removal-div-' + iter).remove() } }
 
 // runs on load, doing a variety of formatting
 // for only the least significant figures page
@@ -68,6 +64,4 @@ window.addEventListener('load', function() {
     // inject all selections into the operation selection field
     injectSelections('operationSelection', operationInjections)
     injectSelections('sigFigSelection', sigFigOrNot)
-
-    console.log(clickmeuwu('1.002'))
 })
