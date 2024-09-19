@@ -66,19 +66,57 @@ function resetForm() {
 
 // runs on load, doing a variety of formatting
 // for only the least significant figures page
-// window.addEventListener('load', function() {
-// })
+window.addEventListener('load', function() {})
 
 function getData() {
+    // all lists
     let extractedData = []
+    let calculatedSigFigData = []
     let extractedOperators = []
     let extractedSigFigMarkers = []
+    // all other things
+    let lowestSigFig = 0
+    let outputString = ''
+
+    // extract all data from the HTML
     for (let iter = 0; iter < currentDivCount; iter++) {
         extractedData.push(document.getElementById(inputPrefix + iter).value)
         extractedOperators.push(document.getElementById(operationSelectPrefix + iter).value)
         extractedSigFigMarkers.push(document.getElementById(sigFigSelectPrefix + iter).value)
     }
-    console.log(extractedData)
-    console.log(extractedOperators)
-    console.log(extractedSigFigMarkers) 
+
+    // check all number values, transfer to sigFigData
+    for (let iter = 0; iter < extractedData.length; iter++) {
+        let current = extractedData[iter]
+        let isSigFig = extractedSigFigMarkers[iter]
+        if (isSigFig == 'false') { continue }
+        let results = clickmeuwu(current.toString())
+        if (results == errors.sigFigCalc.invalidChar) {
+            display(leastSigFigCalcResults, 'invalid characters inputted!')
+            return
+        }
+        else { 
+            calculatedSigFigData.push(results)
+        }
+    }
+
+    // find the lowest amount of sig figs
+    lowestSigFig = Math.min(...calculatedSigFigData) // https://www.geeksforgeeks.org/javascript-spread-operator/
+
+    // append everything into a string
+    for (let iter = 0; iter < extractedData.length; iter++) {
+        let currentNum = extractedData[iter]
+        let currentOperator = extractedOperators[iter]
+        outputString += currentNum + ' '
+        outputString += currentOperator + ' '
+    }
+
+    // remove "end" from the end
+    outputString = outputString.slice(0, (outputString.length - 4)) // https://medium.com/@onlinemsr/how-to-remove-the-last-character-from-a-string-in-javascript-3d1c238d1669
+    
+    // get the answer from the string
+    let answer = eval(outputString) // UH OH OOPSY BE SCARED AAAAAAAAAAAAAAAAAAAAAAAAAA
+
+    // round down to the correct amount of significant figures
+    let currentSigFig = clickmeuwu(answer.toString())
 }

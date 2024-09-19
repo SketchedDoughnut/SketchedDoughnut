@@ -17,6 +17,7 @@ const divPrefix = 'removal-div-'
 const inputPrefix = 'number-input-'
 const operationSelectPrefix = 'operation-select-'
 const sigFigSelectPrefix = 'sig-fig-select-'
+const leastSigFigCalcResults = 'leastSigFigCalcResults'
 
 
 // all variables representing what form is hidden
