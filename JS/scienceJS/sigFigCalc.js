@@ -139,8 +139,8 @@ function clickmeuwu(value = null) {
             // but we only dont count the zeros if there is no decimal point
             if (startedCount && !enteredZeroZone) {
                 saveCount = currentCount
-                savedParsedNumbers = currentParsedNumbers
                 enteredZeroZone = true
+                savedParsedNumbers = currentParsedNumbers
             }
         }
 
@@ -159,10 +159,10 @@ function clickmeuwu(value = null) {
     // display the save state as we ignore the zeros at the end
     if (!containsDecimal && enteredZeroZone) {
         display(sigFigCalcResults, 'the amount of significant figures is: ' + saveCount)
-        return saveCount, savedParsedNumbers
+        return (saveCount, savedParsedNumbers)
     }
     else {
         display(sigFigCalcResults, 'the amount of significant figures is: ' + currentCount)
-        return currentCount, currentParsedNumbers
+        return (currentCount, currentParsedNumbers)
     }
 }

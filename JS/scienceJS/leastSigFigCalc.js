@@ -134,7 +134,7 @@ function getData() {
     answer = eval(outputString) 
     answer = answer.toString()
 
-    display(leastSigFigCalcResults, clickmeuwu('110')[0])
+    display(leastSigFigCalcResults, clickmeuwu(answer))
     return
 
     display(leastSigFigCalcResults, 'the answer is ' + answer + ', with ' + currentSigFig + ' significant figures.')
