@@ -150,6 +150,12 @@ function clickmeuwu(value = null) {
             currentCount += 1
             currentParsedNumbers += character
         }
+
+        // if the current character is a decimal
+        // add it to the current parsed numbers
+        if (character.includes('.')) {
+            currentParsedNumbers += '.'
+        }
     }    
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// POST LOOP LOGIC
@@ -159,10 +165,12 @@ function clickmeuwu(value = null) {
     // display the save state as we ignore the zeros at the end
     if (!containsDecimal && enteredZeroZone) {
         display(sigFigCalcResults, 'the amount of significant figures is: ' + saveCount)
-        return (saveCount, savedParsedNumbers)
+        display(sigFigCalcNewResults, 'the new significant figure is: ' + savedParsedNumbers)
+        return [saveCount, savedParsedNumbers]
     }
     else {
         display(sigFigCalcResults, 'the amount of significant figures is: ' + currentCount)
-        return (currentCount, currentParsedNumbers)
+        display(sigFigCalcNewResults, 'the new significant figure is: ' + currentParsedNumbers)
+        return [currentCount, currentParsedNumbers]
     }
 }

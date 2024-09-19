@@ -86,6 +86,8 @@ function getData() {
     let currentSigFig = 0
     let outputString = ''
     let answer = 0
+    let tempAnswer = ''
+    let finalAnswer = ''
 
     // extract all data from the HTML
     for (let iter = 0; iter < currentDivCount; iter++) {
@@ -134,11 +136,30 @@ function getData() {
     answer = eval(outputString) 
     answer = answer.toString()
 
-    display(leastSigFigCalcResults, clickmeuwu(answer))
-    return
+    // get the current amount of significant figures
+    // also get the new stripped answer, which only includes
+    // the significant figures in the answer
+    currentSigFig = clickmeuwu(answer)[0]
+    significantAnswer = clickmeuwu(answer)[1]
 
-    display(leastSigFigCalcResults, 'the answer is ' + answer + ', with ' + currentSigFig + ' significant figures.')
-    console.log(lowestSigFig)
-    display(leastSigFigCalcResults, "teehee, this still doesn't work...")
+    // while the current amount of significant figures is more then the lowest sig fig
+    // start rounding numbers of the significant figure
+    // basically just chop them off of the end until we reach the right amount of significant figures
+    // or until we have less significant figures
+    // afterwards start increasing significant figures until it matches
+    tempAnswer = significantAnswer
+    tempAnswer = answer
+    while (currentSigFig > lowestSigFig) {
+        tempAnswer /= 10
+        tempAnswer = Math.round(tempAnswer)
+        currentSigFig = clickmeuwu(tempAnswer.toString())[0]
+    }
+
+    // set to final answer
+    finalAnswer = tempAnswer
+
+    // display and return
+    display(leastSigFigCalcResults, 'the answer is ' + finalAnswer + ', with ' + currentSigFig + ' significant figures.')
+    // display(leastSigFigCalcResults, "teehee, this still doesn't work...")
     return
 }

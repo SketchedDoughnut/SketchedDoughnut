@@ -6,6 +6,7 @@ const sigFigCalcDiv = 'sigFigCalcDiv'
 const sigFigCalcForm = 'sigFigCalcForm'
 const sigFigValue = 'sigFigValue'
 const sigFigCalcResults = 'sigFigCalcResults'
+const sigFigCalcNewResults = 'sigFigCalcNewResults'
 
 // all elements for calculating the least amount of significant figures
 const leastSigFigDiv = 'leastSigFigDiv'
