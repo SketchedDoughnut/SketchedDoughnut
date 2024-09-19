@@ -47,7 +47,7 @@ function clickmeuwu(value = null) {
     }) // why in the world do I have to do this :C
     if (foundInvalidChar) {
         display(sigFigCalcResults, 'invalid characters included!')
-        return
+        return errors.sigFigCalc.invalidChar
     }
 
     // if the message is only decimals, error then return
@@ -59,7 +59,7 @@ function clickmeuwu(value = null) {
     })
     if (onlyDecimalChar) {
         display(sigFigCalcResults, 'there is only decimal points here!')
-        return
+        return errors.sigFigCalc.invalidChar
     }
 
     // check if it contains a non zero
@@ -70,7 +70,7 @@ function clickmeuwu(value = null) {
         let allowedState = allowedChars.includes(element)
         if (!allowedState) {
             display(sigFigCalcResults, 'only characters allowed are: ' + allowedChars)
-            return
+            return errors.sigFigCalc.invalidChar
         }
     });
     
