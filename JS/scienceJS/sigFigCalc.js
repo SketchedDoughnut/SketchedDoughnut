@@ -21,6 +21,9 @@ function clickmeuwu(value = null) {
     // running count
     let saveCount = 0
     let currentCount = 0
+    // variable representing what figures are significant
+    let currentParsedNumbers = 0
+    let savedParsedNumbers = 0
 
     // reset display
     display(sigFigCalcResults, '')
@@ -87,11 +90,6 @@ function clickmeuwu(value = null) {
         currentIsZero = character.includes('0')
         currentIsNotZero = !currentIsZero
 
-        // same above, if the current character is zero, then currentIsZero is true
-        // currentIsNotZero is the opposite of currentIsZero
-        currentIsZero = character.includes('0')
-        currentIsNotZero = !currentIsZero
-
         // if current is not zero, then we have encounterd a zero
         // so encounteredNonZeros is true
         if (character != '0') {encounteredNonZeros = true}
@@ -141,13 +139,17 @@ function clickmeuwu(value = null) {
             // but we only dont count the zeros if there is no decimal point
             if (startedCount && !enteredZeroZone) {
                 saveCount = currentCount
+                savedParsedNumbers = currentParsedNumbers
                 enteredZeroZone = true
             }
         }
 
         // if we have started counting, 
         // increase the counter by 1
-        if (startedCount && !character.includes('.')) {currentCount += 1}
+        if (startedCount && !character.includes('.')) {
+            currentCount += 1
+            currentParsedNumbers += character
+        }
     }    
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// POST LOOP LOGIC
@@ -157,10 +159,10 @@ function clickmeuwu(value = null) {
     // display the save state as we ignore the zeros at the end
     if (!containsDecimal && enteredZeroZone) {
         display(sigFigCalcResults, 'the amount of significant figures is: ' + saveCount)
-        return saveCount
+        return saveCount, savedParsedNumbers
     }
     else {
         display(sigFigCalcResults, 'the amount of significant figures is: ' + currentCount)
-        return currentCount
+        return currentCount, currentParsedNumbers
     }
 }

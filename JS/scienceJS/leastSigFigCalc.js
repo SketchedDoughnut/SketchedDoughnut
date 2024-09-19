@@ -99,7 +99,7 @@ function getData() {
         let current = extractedData[iter]
         let isSigFig = extractedSigFigMarkers[iter]
         if (isSigFig == 'false') { continue }
-        let results = clickmeuwu(current.toString())
+        let results = clickmeuwu(current.toString())[0]
         if (results == errors.sigFigCalc.invalidChar) {
             display(leastSigFigCalcResults, 'invalid characters inputted!')
             return
@@ -134,34 +134,38 @@ function getData() {
     answer = eval(outputString) 
     answer = answer.toString()
 
-    // round down to the correct amount of significant figures
-    currentSigFig = clickmeuwu(answer)
+    // // find how many significant figures the current number has
+    // also override answer? idek anymore
+    // answer = clickmeuwu(answer)[1]
+    // currentSigFig = clickmeuwu(answer)[0]
 
-    // add decimal if it is not there
-    if (!answer.includes('.')) {
-        answer += '.'
-    }
+    // // if we have too many significant figures, round characters until we have enough
+    // while (currentSigFig > lowestSigFig) {
+    //     let lastChar = answer.slice(answer.length - 1, answer.length)
+    //     answer = answer.slice(0, (answer.length - 1))
+    //     if (lastChar >= 5) {
+    //         answer += 1
+    //     }
+    //     // console.log('sig fig before ' + currentSigFig)
+    //     currentSigFig = clickmeuwu(answer)[0]
+    //     // console.log('sig fig after ' + currentSigFig)
+    //     // console.log('answer before ' + answer)
+    //     // console.log('answer after ' + answer)
+    //     // console.log('last char ' + lastChar)
+    // }
 
-    // if we do not have enough significant figures, keep adding zeros until we do
-    while (currentSigFig < lowestSigFig) {
-        answer += '0'
-        currentSigFig = clickmeuwu(answer)
-    }
+    // // add decimal if it is not there
+    // if (!answer.includes('.')) {
+    //     answer += '.'
+    // }
 
-    // if we have too many significant figures, round characters until we have enough
-    while (currentSigFig > lowestSigFig) {
-        let lastChar = answer.slice(answer.length - 1, answer.length)
-        answer = answer.slice(0, (answer.length - 1))
-        if (lastChar >= 5) {
-            answer += 1
-        }
-        // console.log('sig fig before ' + currentSigFig)
-        currentSigFig = clickmeuwu(answer)
-        // console.log('sig fig after ' + currentSigFig)
-        // console.log('answer before ' + answer)
-        // console.log('answer after ' + answer)
-        // console.log('last char ' + lastChar)
-    }
+    // // if we do not have enough significant figures, keep adding zeros until we do
+    // while (currentSigFig < lowestSigFig) {
+    //     answer += '0'
+    //     currentSigFig = clickmeuwu(answer)[0]
+    // }
 
-    display(leastSigFigCalcResults, answer)
+    // display(leastSigFigCalcResults, 'the answer is ' + answer + ', with ' + currentSigFig + ' significant figures.')
+    display("teehee, this still doesn't work...")
+    return
 }
