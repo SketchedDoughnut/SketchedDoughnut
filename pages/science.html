@@ -61,8 +61,25 @@
 
         <!-- for simplifying significant figures in an equation to the least significant figures -->
         <div class="hidden" id="leastSigFigDiv">
-            <button id="createNewField" onclick="createInput()">create input field</button>
+            <p>
+                This is a calculator that can do operations with multiple significant figures, then <br>
+                round to the least amount of significant figures. Here is an explanation for how it works! <br>
+                Each text input takes in a number. The following dropdown menu allows you to choose what operation to do. <br>
+                The operation will affect the current number, and then the next number. Optionally, you can select "end", which will signify the end of the equation. <br>
+                The next dropdown menu is meant to signify whether the inputted number is a significant figure or not. Only numbers with that dropdown menu set to "is sig fig". <br>
+                will be considred when rounding down to the least amount of significant figures. <br>
+                Allowed characters to be inputted are: <b>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, and periods</b>
+            </p>
             <form id='leastSigFigForm'>
+                <div>
+                    <button onclick="resetForm()">reset fields</button>
+                    <button id="createNewField" onclick="createField()">create new field</button>
+                </div>
+                <div>
+                    <input type="text" placeholder="number">
+                    <select id="operationSelection"></select>
+                    <select id="sigFigSelection"></select>
+                </div>
             </form>
         </div>
     </body>

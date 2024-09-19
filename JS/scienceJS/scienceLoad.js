@@ -11,6 +11,7 @@ const sigFigCalcResults = 'sigFigCalcResults'
 const leastSigFigDiv = 'leastSigFigDiv'
 const leastSigFigForm = 'leastSigFigForm'
 const createNewField = 'createNewField'
+const operationSelection = 'operationSelection'
 
 
 // all variables representing what form is hidden
@@ -20,7 +21,7 @@ const hiddenDivs = [
 ]
 
 // all toggles
-disablePageClearing = false
+let disablePageClearing = false
 
 
 
@@ -49,12 +50,12 @@ function togglePageClearing(override_value = null) {
 // function for toggling what is hidden and what is shown
 // called on from button clicks, takes in the element to toggle its appearance
 function toggleHidden(element) {
-    elem = document.getElementById(element)
+    let elem = document.getElementById(element)
     elem.classList.toggle('hidden')
     if (!disablePageClearing) {
         for (let iter = 0; iter < hiddenDivs.length; iter++) {
             current = hiddenDivs[iter]
-            current_elem = document.getElementById(current)
+            let current_elem = document.getElementById(current)
             if (current == element) { continue }
             if ( !current_elem.classList.contains('hidden') ) { current_elem.classList.toggle('hidden') }
         }
