@@ -134,38 +134,10 @@ function getData() {
     answer = eval(outputString) 
     answer = answer.toString()
 
-    // // find how many significant figures the current number has
-    // also override answer? idek anymore
-    // answer = clickmeuwu(answer)[1]
-    // currentSigFig = clickmeuwu(answer)[0]
+    display(leastSigFigCalcResults, clickmeuwu('110')[0])
+    return
 
-    // // if we have too many significant figures, round characters until we have enough
-    // while (currentSigFig > lowestSigFig) {
-    //     let lastChar = answer.slice(answer.length - 1, answer.length)
-    //     answer = answer.slice(0, (answer.length - 1))
-    //     if (lastChar >= 5) {
-    //         answer += 1
-    //     }
-    //     // console.log('sig fig before ' + currentSigFig)
-    //     currentSigFig = clickmeuwu(answer)[0]
-    //     // console.log('sig fig after ' + currentSigFig)
-    //     // console.log('answer before ' + answer)
-    //     // console.log('answer after ' + answer)
-    //     // console.log('last char ' + lastChar)
-    // }
-
-    // // add decimal if it is not there
-    // if (!answer.includes('.')) {
-    //     answer += '.'
-    // }
-
-    // // if we do not have enough significant figures, keep adding zeros until we do
-    // while (currentSigFig < lowestSigFig) {
-    //     answer += '0'
-    //     currentSigFig = clickmeuwu(answer)[0]
-    // }
-
-    // display(leastSigFigCalcResults, 'the answer is ' + answer + ', with ' + currentSigFig + ' significant figures.')
+    display(leastSigFigCalcResults, 'the answer is ' + answer + ', with ' + currentSigFig + ' significant figures.')
     console.log(lowestSigFig)
     display(leastSigFigCalcResults, "teehee, this still doesn't work...")
     return
