@@ -23,10 +23,10 @@ function clickmeuwu(value = null) {
     let currentCount = 0
 
     // reset display
-    display(sigFigOutput, '')
+    display(sigFigCalcResults, '')
 
     // get data, and split into list of each character
-    let inputSigFig = document.getElementById(sigFigInput).value
+    let inputSigFig = document.getElementById(sigFigValue).value
     if (!(value == null)) {
         inputSigFig = value
     }
@@ -46,7 +46,7 @@ function clickmeuwu(value = null) {
         }
     }) // why in the world do I have to do this :C
     if (foundInvalidChar) {
-        display(sigFigOutput, 'invalid characters included!')
+        display(sigFigCalcResults, 'invalid characters included!')
         return
     }
 
@@ -58,7 +58,7 @@ function clickmeuwu(value = null) {
         }
     })
     if (onlyDecimalChar) {
-        display(sigFigOutput, 'there is only decimal points here!')
+        display(sigFigCalcResults, 'there is only decimal points here!')
         return
     }
 
@@ -69,7 +69,7 @@ function clickmeuwu(value = null) {
         }
         let allowedState = allowedChars.includes(element)
         if (!allowedState) {
-            display(sigFigOutput, 'only characters allowed are: ' + allowedChars)
+            display(sigFigCalcResults, 'only characters allowed are: ' + allowedChars)
             return
         }
     });
@@ -156,11 +156,11 @@ function clickmeuwu(value = null) {
     // and if we are in a zero zone
     // display the save state as we ignore the zeros at the end
     if (!containsDecimal && enteredZeroZone) {
-        display(sigFigOutput, 'the amount of significant figures is: ' + saveCount)
+        display(sigFigCalcResults, 'the amount of significant figures is: ' + saveCount)
         return saveCount
     }
     else {
-        display(sigFigOutput, 'the amount of significant figures is: ' + currentCount)
+        display(sigFigCalcResults, 'the amount of significant figures is: ' + currentCount)
         return currentCount
     }
 }
