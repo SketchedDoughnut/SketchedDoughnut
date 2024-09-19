@@ -38,9 +38,10 @@ function createField() {
     let operationSelection = document.createElement('select')
     let sigFigSelection = document.createElement('select')
     // set all of the IDs
-    newDiv.setAttribute('id', 'removal-div-' + currentDivCount)
-    operationSelection.setAttribute('id', 'operation-select-' + currentDivCount)
-    sigFigSelection.setAttribute('id', 'sig-fig-select-' + currentDivCount)
+    newDiv.setAttribute('id', divPrefix + currentDivCount)
+    newInput.setAttribute('id', inputPrefix + currentDivCount)
+    operationSelection.setAttribute('id', operationSelectPrefix + currentDivCount)
+    sigFigSelection.setAttribute('id', sigFigSelectPrefix + currentDivCount)
     // set any other values for things
     newInput.setAttribute('placeholder', 'number')
     // append everything to their respective elements
@@ -49,19 +50,30 @@ function createField() {
     newDiv.append(sigFigSelection)
     form.append(newDiv)
     // add selections to the new fields
-    injectSelections('operation-select-' + currentDivCount, operationInjections)
-    injectSelections('sig-fig-select-' + currentDivCount, sigFigOrNot)
+    injectSelections(operationSelectPrefix + currentDivCount, operationInjections)
+    injectSelections(sigFigSelectPrefix + currentDivCount, sigFigOrNot)
     // increase current count
     currentDivCount += 1
 }
 
 // resets the whole form
-function resetForm() { for (let iter = 0; iter < currentDivCount; iter++) { document.getElementById('removal-div-' + iter).remove() } }
+function resetForm() { for (let iter = 0; iter < currentDivCount; iter++) { document.getElementById(divPrefix + iter).remove() } }
 
 // runs on load, doing a variety of formatting
 // for only the least significant figures page
-window.addEventListener('load', function() {
-    // inject all selections into the operation selection field
-    injectSelections('operationSelection', operationInjections)
-    injectSelections('sigFigSelection', sigFigOrNot)
-})
+// window.addEventListener('load', function() {
+// })
+
+function getData() {
+    let extractedData = []
+    let extractedOperators = []
+    let extractedSigFigMarkers = []
+    for (let iter = 0; iter < currentDivCount; iter++) {
+        extractedData.push(document.getElementById(inputPrefix + iter).value)
+        extractedOperators.push(document.getElementById(operationSelectPrefix + iter).value)
+        extractedSigFigMarkers.push(document.getElementById(sigFigSelectPrefix + iter).value)
+    }
+    console.log(extractedData)
+    console.log(extractedOperators)
+    console.log(extractedSigFigMarkers) 
+}

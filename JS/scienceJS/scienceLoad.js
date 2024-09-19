@@ -12,6 +12,11 @@ const leastSigFigDiv = 'leastSigFigDiv'
 const leastSigFigForm = 'leastSigFigForm'
 const createNewField = 'createNewField'
 const operationSelection = 'operationSelection'
+const sigFigSelection = 'sigFigSelection'
+const divPrefix = 'removal-div-'
+const inputPrefix = 'number-input-'
+const operationSelectPrefix = 'operation-select-'
+const sigFigSelectPrefix = 'sig-fig-select-'
 
 
 // all variables representing what form is hidden
