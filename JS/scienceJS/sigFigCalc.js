@@ -22,8 +22,8 @@ function clickmeuwu(value = null) {
     let saveCount = 0
     let currentCount = 0
     // variable representing what figures are significant
-    let currentParsedNumbers = 0
-    let savedParsedNumbers = 0
+    let currentParsedNumbers = ''
+    let savedParsedNumbers = ''
 
     // reset display
     display(sigFigCalcResults, '')

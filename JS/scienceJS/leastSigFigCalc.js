@@ -166,6 +166,7 @@ function getData() {
     // }
 
     // display(leastSigFigCalcResults, 'the answer is ' + answer + ', with ' + currentSigFig + ' significant figures.')
-    display("teehee, this still doesn't work...")
+    console.log(lowestSigFig)
+    display(leastSigFigCalcResults, "teehee, this still doesn't work...")
     return
 }
