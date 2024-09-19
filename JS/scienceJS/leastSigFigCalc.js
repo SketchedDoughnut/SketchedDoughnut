@@ -56,6 +56,13 @@ function createField() {
     currentDivCount += 1
 }
 
+// removes one bottom most form
+function removeField() {
+    if (currentDivCount == 0) { return }
+    document.getElementById(divPrefix + (currentDivCount - 1)).remove()
+    currentDivCount -= 1
+}
+
 // resets the whole form
 function resetForm() { 
     for (let iter = 0; iter < currentDivCount; iter++) {
@@ -76,7 +83,9 @@ function getData() {
     let extractedSigFigMarkers = []
     // all other things
     let lowestSigFig = 0
+    let currentSigFig = 0
     let outputString = ''
+    let answer = 0
 
     // extract all data from the HTML
     for (let iter = 0; iter < currentDivCount; iter++) {
@@ -112,11 +121,47 @@ function getData() {
     }
 
     // remove "end" from the end
-    outputString = outputString.slice(0, (outputString.length - 4)) // https://medium.com/@onlinemsr/how-to-remove-the-last-character-from-a-string-in-javascript-3d1c238d1669
+    if (outputString.includes(' end')) {
+        outputString = outputString.slice(0, (outputString.length - 4)) // https://medium.com/@onlinemsr/how-to-remove-the-last-character-from-a-string-in-javascript-3d1c238d1669
+    }
     
     // get the answer from the string
-    let answer = eval(outputString) // UH OH OOPSY BE SCARED AAAAAAAAAAAAAAAAAAAAAAAAAA
+    // UH OH OOPSY BE SCARED AAAAAAAAAAAAAAAAAAAAAAAAAA
+    // but fr this is fine to do because no one can inject malicious code
+    // the only issue it causes is if someone inflicts bad things upon themself 
+    // by putting something into this eval
+    // its self inflicted torture, simply. and isn't a risk for users!
+    answer = eval(outputString) 
+    answer = answer.toString()
 
     // round down to the correct amount of significant figures
-    let currentSigFig = clickmeuwu(answer.toString())
+    currentSigFig = clickmeuwu(answer)
+
+    // add decimal if it is not there
+    if (!answer.includes('.')) {
+        answer += '.'
+    }
+
+    // if we do not have enough significant figures, keep adding zeros until we do
+    while (currentSigFig < lowestSigFig) {
+        answer += '0'
+        currentSigFig = clickmeuwu(answer)
+    }
+
+    // if we have too many significant figures, round characters until we have enough
+    while (currentSigFig > lowestSigFig) {
+        let lastChar = answer.slice(answer.length - 1, answer.length)
+        answer = answer.slice(0, (answer.length - 1))
+        if (lastChar >= 5) {
+            answer += 1
+        }
+        // console.log('sig fig before ' + currentSigFig)
+        currentSigFig = clickmeuwu(answer)
+        // console.log('sig fig after ' + currentSigFig)
+        // console.log('answer before ' + answer)
+        // console.log('answer after ' + answer)
+        // console.log('last char ' + lastChar)
+    }
+
+    display(leastSigFigCalcResults, answer)
 }
