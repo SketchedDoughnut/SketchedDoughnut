@@ -57,7 +57,12 @@ function createField() {
 }
 
 // resets the whole form
-function resetForm() { for (let iter = 0; iter < currentDivCount; iter++) { document.getElementById(divPrefix + iter).remove() } }
+function resetForm() { 
+    for (let iter = 0; iter < currentDivCount; iter++) {
+        document.getElementById(divPrefix + iter).remove()
+    }
+    currentDivCount = 0
+}
 
 // runs on load, doing a variety of formatting
 // for only the least significant figures page
