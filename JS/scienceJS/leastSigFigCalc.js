@@ -82,12 +82,6 @@ function getData() {
     let extractedOperators = []
     let extractedSigFigMarkers = []
     // all other things
-    let lowestSigFig = 0
-    let currentSigFig = 0
-    let outputString = ''
-    let answer = 0
-    let tempAnswer = ''
-    let finalAnswer = ''
 
     // extract all data from the HTML
     for (let iter = 0; iter < currentDivCount; iter++) {
@@ -101,7 +95,7 @@ function getData() {
         let current = extractedData[iter]
         let isSigFig = extractedSigFigMarkers[iter]
         if (isSigFig == 'false') { continue }
-        let results = clickmeuwu(current.toString())[0]
+        let results = clickmeuwu(current.toString(), false)[0]
         if (results == errors.sigFigCalc.invalidChar) {
             display(leastSigFigCalcResults, 'invalid characters inputted!')
             return
@@ -112,19 +106,20 @@ function getData() {
     }
 
     // find the lowest amount of sig figs
-    lowestSigFig = Math.min(...calculatedSigFigData) // https://www.geeksforgeeks.org/javascript-spread-operator/
+    let lowestSigFig = Math.min(...calculatedSigFigData) // https://www.geeksforgeeks.org/javascript-spread-operator/
 
     // append everything into a string
+    let equation = ''
     for (let iter = 0; iter < extractedData.length; iter++) {
         let currentNum = extractedData[iter]
         let currentOperator = extractedOperators[iter]
-        outputString += currentNum + ' '
-        outputString += currentOperator + ' '
+        equation += currentNum + ' '
+        equation += currentOperator + ' '
     }
 
     // remove "end" from the end
-    if (outputString.includes(' end')) {
-        outputString = outputString.slice(0, (outputString.length - 4)) // https://medium.com/@onlinemsr/how-to-remove-the-last-character-from-a-string-in-javascript-3d1c238d1669
+    if (equation.includes(' end')) {
+        equation = equation.slice(0, (equation.length - 4)) // https://medium.com/@onlinemsr/how-to-remove-the-last-character-from-a-string-in-javascript-3d1c238d1669
     }
     
     // get the answer from the string
@@ -133,33 +128,79 @@ function getData() {
     // the only issue it causes is if someone inflicts bad things upon themself 
     // by putting something into this eval
     // its self inflicted torture, simply. and isn't a risk for users!
-    answer = eval(outputString) 
+    let answer = eval(equation) 
     answer = answer.toString()
 
     // get the current amount of significant figures
     // also get the new stripped answer, which only includes
     // the significant figures in the answer
-    currentSigFig = clickmeuwu(answer)[0]
-    significantAnswer = clickmeuwu(answer)[1]
+    let currentSigFig = clickmeuwu(answer, false)[0]
+    let significantAnswer = clickmeuwu(answer, false)[1]
 
     // while the current amount of significant figures is more then the lowest sig fig
-    // start rounding numbers of the significant figure
-    // basically just chop them off of the end until we reach the right amount of significant figures
-    // or until we have less significant figures
-    // afterwards start increasing significant figures until it matches
-    tempAnswer = significantAnswer
-    tempAnswer = answer
+    // start rounding numbers of the significantAnswer
+    // this is different then rounding the raw answer, as it has only the significant figures
+    // afterwards, we will add on the zeros.
+    let calcAnswer = significantAnswer
     while (currentSigFig > lowestSigFig) {
-        tempAnswer /= 10
-        tempAnswer = Math.round(tempAnswer)
-        currentSigFig = clickmeuwu(tempAnswer.toString())[0]
+
+        // divide number by 10
+        // this moves the last number into the decimal zone
+        // Math.round rounds to the nearest integer, so it'll round this properly
+        // we keep doing this until we have the right amount (or less then) significant figures
+        // we dont need to multiply by 10 again because the number has been converted back to an integer
+        // mulitiplying by 10 weirdly modifies the result afterwards, which we don't want
+        calcAnswer /= 10
+        calcAnswer = Math.round(calcAnswer)
+        currentSigFig = clickmeuwu(calcAnswer.toString(), false)[0]
     }
 
+    // // go over the raw answer, and find out two things:
+    // // 1: how many leading zeros there are
+    // // 2: how many trailing zeros there are
+    // // these should be shoved back onto calcAnswer before its outputted
+    // // or well, set to finalAnswer, which is then outputted
+    // let leadingZeroCount = 0
+    // let countingLeading = true
+    // for (let iter = 0; iter < answer.length; iter++) {
+    //     character = answer[iter]
+
+    //     // if the character is not zero, set countingLeading to false
+    //     // this is because we are no longer counting leading zeros as we have found a non zero
+    //     if (!(character.includes('0'))) {
+    //         countingLeading = false
+    //     }
+
+    //     // if we are counting leading zeros
+    //     // and the current character is zero,
+    //     // increase leadingZeroCount by one
+    //     if (countingLeading && character.includes('0')) {
+    //         leadingZeroCount += 1
+    //     }
+
+    //     // if the character is a decimal
+    //     // log where it is at
+    //     if (character.includes('.')) {
+    //         decimalIndex = iter
+    //     }
+    // }
+
+    // // append all of the leading zeros to shovedAnswer
+    // // the amount to add is shown above
+    // let shovedAnswer = ''
+    // for (let iter = 0; iter < leadingZeroCount; iter++) {
+    //     shovedAnswer += '0'    
+    //     console.log('appended: ' + shovedAnswer)
+    // }
+    // shovedAnswer += calcAnswer
+    // console.log(shovedAnswer)
+    // return
+
     // set to final answer
-    finalAnswer = tempAnswer
+    let finalAnswer = calcAnswer
 
     // display and return
-    display(leastSigFigCalcResults, 'the answer is ' + finalAnswer + ', with ' + currentSigFig + ' significant figures.')
-    // display(leastSigFigCalcResults, "teehee, this still doesn't work...")
+    // display(leastSigFigCalcResults, 'the answer is ' + finalAnswer + ', with ' + currentSigFig + ' significant figures.')
+    display(leastSigFigCalcResults, "teehee, this still doesn't work...")
     return
 }

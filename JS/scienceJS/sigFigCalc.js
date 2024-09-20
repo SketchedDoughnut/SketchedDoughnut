@@ -1,6 +1,6 @@
 // function for calculating how many
 // significany figures are in a number
-function clickmeuwu(value = null) {
+function clickmeuwu(value = null, doDisplay = true) {
     // set up constants
     const allowedChars = '.0123456789'
 
@@ -49,7 +49,7 @@ function clickmeuwu(value = null) {
         }
     }) // why in the world do I have to do this :C
     if (foundInvalidChar) {
-        display(sigFigCalcResults, 'invalid characters included!')
+        if (doDisplay) { display(sigFigCalcResults, 'invalid characters included!') }
         return errors.sigFigCalc.invalidChar
     }
 
@@ -61,7 +61,7 @@ function clickmeuwu(value = null) {
         }
     })
     if (onlyDecimalChar) {
-        display(sigFigCalcResults, 'there is only decimal points here!')
+        if (doDisplay) { display(sigFigCalcResults, 'there is only decimal points here!') }
         return errors.sigFigCalc.invalidChar
     }
 
@@ -72,7 +72,7 @@ function clickmeuwu(value = null) {
         }
         let allowedState = allowedChars.includes(element)
         if (!allowedState) {
-            display(sigFigCalcResults, 'only characters allowed are: ' + allowedChars)
+            if (doDisplay) { display(sigFigCalcResults, 'only characters allowed are: ' + allowedChars) }
             return errors.sigFigCalc.invalidChar
         }
     });
@@ -164,13 +164,17 @@ function clickmeuwu(value = null) {
     // and if we are in a zero zone
     // display the save state as we ignore the zeros at the end
     if (!containsDecimal && enteredZeroZone) {
-        display(sigFigCalcResults, 'the amount of significant figures is: ' + saveCount)
-        display(sigFigCalcNewResults, 'the new significant figure is: ' + savedParsedNumbers)
-        return [saveCount, savedParsedNumbers]
+        if (doDisplay) { 
+            display(sigFigCalcResults, 'the amount of significant figures is: ' + saveCount)
+            display(sigFigCalcNewResults, 'the new significant figure is: ' + currentParsedNumbers /*savedParsedNumbers*/)
+        }
+        return [saveCount, currentParsedNumbers /*savedParsedNumbers*/]
     }
     else {
-        display(sigFigCalcResults, 'the amount of significant figures is: ' + currentCount)
-        display(sigFigCalcNewResults, 'the new significant figure is: ' + currentParsedNumbers)
+        if (doDisplay) { 
+            display(sigFigCalcResults, 'the amount of significant figures is: ' + currentCount)
+            display(sigFigCalcNewResults, 'the new significant figure is: ' + currentParsedNumbers)
+        }
         return [currentCount, currentParsedNumbers]
     }
 }
