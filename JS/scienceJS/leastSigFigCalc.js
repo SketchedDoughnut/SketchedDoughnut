@@ -202,5 +202,4 @@ function getData() {
     // display and return
     // display(leastSigFigCalcResults, 'the answer is ' + finalAnswer + ', with ' + currentSigFig + ' significant figures.')
     display(leastSigFigCalcResults, "teehee, this still doesn't work...")
-    return
 }
