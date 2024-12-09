@@ -8,7 +8,7 @@ Sketched Doughnut Distraction Act, known as SDA, is a game project I have made. 
 Miles To Muppets is a package I made because of a joke. It converts miles distance to how many songs you can listen to from a album of the Muppets! To learn more / use the package, go [here!](https://github.com/SketchedDoughnut/miles-to-muppets)
 
 **lynxy** <br>
-lynxy is another package I have made. It is code that makes setting up a server / client system on a LAN network incredibly easy. To learn more, go [here!](https://github.com/SketchedDoughnut/lynxy)
+lynxy is another package I have made. It is code that makes setting up a server / client system on the internet incredibly easy. To learn more, go [here!](https://github.com/SketchedDoughnut/lynxy)
 
 
 <!--
