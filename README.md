@@ -1,24 +1,25 @@
 ### Hey~! I'm Sketched Doughnut.
-I'm a developer that does solo and cooperative projects. below are some of my featured projects!
+I like to code and create silly projects, usually just for fun :3 
+Below are some of my featured projects! Python libraries can be found on my [PyPI page](https://pypi.org/user/SketchedDoughnut/).
 
 ***
 
-<!-- **SDA** <br>
-Sketched Doughnut Distraction Act, also known as SDA, is a game project I have made. It has an installer, an update agent, and some games. Learn more [here!](https://github.com/SketchedDoughnut/SDA) -->
+**[Miles To Muppets](https://github.com/SketchedDoughnut/miles-to-muppets)** <br>
+Miles To Muppets is a package I made because of a joke. It converts miles distance to how many songs you can listen to from a album of The Muppets!
 
-**Miles To Muppets** <br>
-Miles To Muppets is a package I made because of a joke. It converts miles distance to how many songs you can listen to from a album of The Muppets! Learn more [here!](https://github.com/SketchedDoughnut/miles-to-muppets)
+**[Lynxy](https://github.com/SketchedDoughnut/lynxy)** <br>
+Lynxy is a networking package I made that simplified setting up a client-to-client system incredibly easy.
 
-**Lynxy** <br>
-Lynxy is a networking package I made that simplified setting up a client-to-client system incredibly easy. Learn more [here!](https://github.com/SketchedDoughnut/lynxy)
-
-<!-- **screentime** <br>
-screentime is a very basic screentime monitor I made that supports features such as logging daily info, and logging data every minute. Learn more [here!](https://github.com/SketchedDoughnut/screentime) -->
+**[Pico](https://github.com/SketchedDoughnut/Pico)** <br>
+Pico is a repository that emulates different controls such as a keyboard or a controller. It is written in CircuitPython.
 
 
 
 
 
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --> 
 
 <!--
 **SketchedDoughnut/SketchedDoughnut** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
