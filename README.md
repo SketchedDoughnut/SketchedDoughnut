@@ -11,7 +11,7 @@ Lynxy is a networking package I made that simplified setting up a client-to-clie
 Miles To Muppets is a package I made because of a joke. It converts miles distance to how many songs you can listen to from a album of The Muppets!
 
 **[Pico](https://github.com/SketchedDoughnut/Pico)** <br>
-Pico is a repository that emulates different controls such as a keyboard or a controller. It is written in CircuitPython.
+Pico is a repository that emulates different controls via a Raspberry Pi Pico 2W, such as a keyboard or a controller. It is written in CircuitPython.
 
 **[Zoo Project](https://github.com/SketchedDoughnut/ZooProject)** <br>
 This is a project done for a final assignment of AP Biology in which we compared the natural habitats of animals to how well they were accommodated in the Oregon Zoo.
