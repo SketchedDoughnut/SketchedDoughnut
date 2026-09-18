@@ -19,7 +19,7 @@
 
 # 
 
-I like to code and create silly projects, usually just for fun :3 
+I like to code and create silly projects, usually just for fun :3 <br>
 Below are some of my featured projects!
 
 ***
