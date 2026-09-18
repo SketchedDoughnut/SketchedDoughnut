@@ -13,6 +13,9 @@ Lynxy is a networking package I made that simplified setting up a client-to-clie
 **[Pico](https://github.com/SketchedDoughnut/Pico)** <br>
 Pico is a repository that emulates different controls such as a keyboard or a controller. It is written in CircuitPython.
 
+**[Zoo Project](https://github.com/SketchedDoughnut/ZooProject)** <br>
+This is a project done for a final assignment of AP Biology in which we compared the natural habitats of animals to how well they were accommodated in the Oregon Zoo.
+
 
 
 
