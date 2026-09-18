@@ -4,11 +4,11 @@ Below are some of my featured projects! Python libraries can be found on my [PyP
 
 ***
 
-**[Miles To Muppets](https://github.com/SketchedDoughnut/miles-to-muppets)** <br>
-Miles To Muppets is a package I made because of a joke. It converts miles distance to how many songs you can listen to from a album of The Muppets!
-
 **[Lynxy](https://github.com/SketchedDoughnut/lynxy)** <br>
 Lynxy is a networking package I made that simplified setting up a client-to-client system incredibly easy.
+
+**[Miles To Muppets](https://github.com/SketchedDoughnut/miles-to-muppets)** <br>
+Miles To Muppets is a package I made because of a joke. It converts miles distance to how many songs you can listen to from a album of The Muppets!
 
 **[Pico](https://github.com/SketchedDoughnut/Pico)** <br>
 Pico is a repository that emulates different controls such as a keyboard or a controller. It is written in CircuitPython.
