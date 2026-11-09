@@ -16,6 +16,7 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⠉⠁⠀⠀⠀⠀⠙⢿⣿⣿⠇⠀⠀⠀⠀⠀⠀<br>
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⠀⠀⠀⠀⠀⠀⠀<br>
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀<br> -->
+
 I like to code and create silly projects, usually just for fun :3 <br>
 Below are some of my featured projects!
 
@@ -25,16 +26,16 @@ Below are some of my featured projects!
 *Python libraries can be found on my [PyPI page](https://pypi.org/user/SketchedDoughnut/)!*
 
 **[Lynxy](https://github.com/SketchedDoughnut/lynxy)** <br>
-Lynxy is a networking package I made that simplified setting up a client-to-client system incredibly easy.
+A simple networking package written in Python to simplify communication between two clients.
 
-**[Miles To Muppets](https://github.com/SketchedDoughnut/miles-to-muppets)** <br>
-Miles To Muppets is a package I made because of a joke. It converts miles distance to how many songs you can listen to from a album of The Muppets!
+<!-- **[Miles To Muppets](https://github.com/SketchedDoughnut/miles-to-muppets)** <br>
+Miles To Muppets is a package that converts distance into how many songs from The Muppets album you can listen to. -->
 
-**[Pico](https://github.com/SketchedDoughnut/Pico)** <br>
-Pico is a repository that emulates different controls via a Raspberry Pi Pico 2W, such as a keyboard or a controller. It is written in CircuitPython.
+**[Pico](https://github.com/SketchedDoughnut/pico)** <br>
+A collection of code that uses custom HID descriptors to emulate different devices via a Raspberry Pico 2w.
 
-**[Zoo Project](https://github.com/SketchedDoughnut/ZooProject)** <br>
-This is a project done for a final assignment of AP Biology in which we compared the natural habitats of animals to how well they were accommodated in the Oregon Zoo.
+**[Zoo Project](https://github.com/SketchedDoughnut/zoo-project)** <br>
+A final project for AP Biology, in which the natural habitats of animals are compared to the habitats they are provided in the Oregon Zoo.
 
 Ok bye!! 
 
